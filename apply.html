@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Apply Now - TASS Toledo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-navy">
+  <div class="container">
+    <a class="navbar-brand" href="index.html"><strong>TASS Toledo</strong></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="apply.html">Apply Now</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<section class="container py-5">
+  <h2>Apply Now</h2>
+  <p>Please fill out the form below. This is a demo submission: submissions are saved locally in your browser for the presentation.</p>
+  <form id="applyForm" class="row g-3">
+    <div class="col-md-6">
+      <label for="fullname" class="form-label">Full name</label>
+      <input type="text" class="form-control" id="fullname" required>
+    </div>
+    <div class="col-md-6">
+      <label for="phone" class="form-label">Phone / Contact</label>
+      <input type="tel" class="form-control" id="phone" required>
+    </div>
+    <div class="col-md-6">
+      <label for="position" class="form-label">Position applying for</label>
+      <input type="text" class="form-control" id="position" required>
+    </div>
+    <div class="col-md-6">
+      <label for="location" class="form-label">Preferred location</label>
+      <select id="location" class="form-select">
+        <option>Toledo City</option>
+        <option>Cebu City</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="col-12">
+      <label for="resume" class="form-label">Resume (paste or short summary)</label>
+      <textarea id="resume" class="form-control" rows="4"></textarea>
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-gold">Submit Application</button>
+      <button type="button" id="showSaved" class="btn btn-outline-navy ms-2">Show Saved (demo)</button>
+    </div>
+    <div class="col-12 mt-2" id="formMsg" style="display:none;"></div>
+  </form>
+</section>
+
+<footer class="bg-dark text-white py-3 mt-5">
+  <div class="container text-center small">
+    &copy; 2025 TASS Toledo. All rights reserved. &mdash; Borja Building, Luray 2, Toledo City
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
