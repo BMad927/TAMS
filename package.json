@@ -1,0 +1,20 @@
+{
+  "name": "tams",
+  "version": "1.0.0",
+  "description": "<<<<<<< HEAD",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BMad927/TAMS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BMad927/TAMS/issues"
+  },
+  "homepage": "https://github.com/BMad927/TAMS#readme"
+}

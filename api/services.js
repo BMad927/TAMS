@@ -1,11 +1,14 @@
-services.js
 export default function handler(req, res) {
   res.status(200).json({
     services: [
-      "Network Setup",
-      "Hardware Repair",
-      "Software Installation",
-      "Technical Support"
+      "Stevedoring",
+      "Winch Operator (Crane Operator)",
+      "Payloader Operation",
+      "Arrastre Services",
+      "Kapatas (Foreman)",
+      "Driver",
+      "Palletizer",
+      "Mooring Operations"
     ]
   });
 }
