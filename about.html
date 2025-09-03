@@ -11,12 +11,14 @@
     <h1>TAMS</h1>
     <nav>
       <a href="index.html">Home</a>
-      <a href="about.html" class="active">About</a>
-      <a href="services.html">Services</a>
+      <a href="about.html"class="active"></a>>About</a>
+      <a href="services.html">Services</a>s
       <a href="contact.html">Contact</a>
       <a href="apply.html">Apply</a>
     </nav>
+    <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
   </header>
+  
 
   <main>
     <section class="about">
@@ -42,5 +44,25 @@
   <footer>
     <p>© 2025 TAMS. All rights reserved.</p>
   </footer>
+
+  <script>
+    function toggleTheme() {
+      const root = document.documentElement;
+      if (root.getAttribute("data-theme") === "dark") {
+        root.setAttribute("data-theme", "light");
+        localStorage.setItem("theme", "light");
+      } else {
+        root.setAttribute("data-theme", "dark");
+        localStorage.setItem("theme", "dark");
+      }
+    }
+  
+    // Load saved theme on refresh
+    (function() {
+      const savedTheme = localStorage.getItem("theme") || "light";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+    })();
+  </script>
+  
 </body>
 </html>

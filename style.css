@@ -1,4 +1,21 @@
-/* Global Reset */
+/* Theme Variables */
+:root[data-theme="light"] {
+  --text: #0c0c0a;
+  --background: #ffffff;
+  --primary: #c2ae48;
+  --secondary: #e8d781;
+  --accent: #f5d949;
+}
+
+:root[data-theme="dark"] {
+  --text: #f6f6f4;
+  --background: #000000;
+  --primary: #b8a33d;
+  --secondary: #7d6c17;
+  --accent: #b89b0a;
+}
+
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -8,14 +25,15 @@
 
 body {
   line-height: 1.6;
-  background: #f9f9f9;
-  color: #333;
+  background: var(--background);
+  color: var(--text);
+  transition: background 0.3s, color 0.3s;
 }
 
 /* Header / Navbar */
 header {
-  background: #004080;
-  color: white;
+  background: var(--primary);
+  color: var(--text);
   padding: 15px 20px;
   display: flex;
   justify-content: space-between;
@@ -35,7 +53,7 @@ nav {
 }
 
 nav a {
-  color: white;
+  color: var(--text);
   text-decoration: none;
   padding: 8px 14px;
   border-radius: 4px;
@@ -43,20 +61,45 @@ nav a {
 }
 
 nav a:hover {
-  background: #0059b3;
+  background: var(--secondary);
 }
 
 nav a.active {
-  background: #0073e6;
+  background: var(--accent);
   font-weight: bold;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+  background: var(--secondary);
+  border: none;
+  padding: 8px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.theme-toggle:hover {
+  background: var(--accent);
+}
+
+/* Container */
+main, section {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background: var(--background);
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 /* Hero Section (Home Page) */
 .hero {
   text-align: center;
   padding: 60px 20px;
-  background: linear-gradient(to right, #004080, #0066cc);
-  color: white;
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  color: var(--text);
+  border-radius: 10px;
 }
 
 .hero h2 {
@@ -69,31 +112,34 @@ nav a.active {
   margin-bottom: 20px;
 }
 
+/* Buttons */
 .buttons {
   display: flex;
   justify-content: center;
   gap: 15px;
+  flex-wrap: wrap;
 }
 
 .btn {
   display: inline-block;
   padding: 10px 20px;
-  background: #0073e6;
-  color: white;
-  border-radius: 4px;
+  background: var(--primary);
+  color: var(--text);
+  border-radius: 6px;
   text-decoration: none;
   transition: background 0.3s;
 }
 
 .btn:hover {
-  background: #005bb5;
+  background: var(--accent);
 }
 
 /* Footer */
 footer {
   text-align: center;
   padding: 15px;
-  background: #004080;
-  color: white;
+  background: var(--primary);
+  color: var(--text);
   margin-top: 40px;
+  border-radius: 8px 8px 0 0;
 }
