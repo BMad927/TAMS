@@ -1,50 +1,42 @@
-// Users
-fetch("https://tams-system.vercel.app/api/users")
-  .then(res => res.json())
-  .then(data => {
-    const container = document.querySelector("#users .content");
-    const list = document.createElement("ul");
+async function loadAnalytics() {
+  try {
+    const response = await fetch("/api/hello");
+    const data = await response.json();
 
-    data.users.forEach(user => {
-      const li = document.createElement("li");
-      li.textContent = `${user.name} - ${user.role}`;
-      list.appendChild(li);
+    // Example data for chart (replace with actual analytics data if needed)
+    const labels = ["Visitors", "Clients", "Projects"];
+    const values = [
+      data.analytics.visitors || 100,
+      data.analytics.clients || 50,
+      data.analytics.projects || 20
+    ];
+
+    const ctx = document.getElementById("analyticsChart").getContext("2d");
+    new Chart(ctx, {
+      type: "bar",
+      data: {
+        labels: labels,
+        datasets: [{
+          label: "TAMS Analytics",
+          data: values,
+          backgroundColor: ["#007bff", "#28a745", "#ffc107"]
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false },
+          title: { display: true, text: "System Analytics" }
+        },
+        scales: {
+          y: { beginAtZero: true }
+        }
+      }
     });
 
-    container.appendChild(list);
-  })
-  .catch(err => console.error("Error fetching users:", err));
+  } catch (err) {
+    console.error("Error fetching API:", err);
+  }
+}
 
-// Services
-fetch("https://tams-system.vercel.app/api/services")
-  .then(res => res.json())
-  .then(data => {
-    const container = document.querySelector("#services .content");
-    const list = document.createElement("ul");
-
-    data.services.forEach(service => {
-      const li = document.createElement("li");
-      li.textContent = service;
-      list.appendChild(li);
-    });
-
-    container.appendChild(list);
-  })
-  .catch(err => console.error("Error fetching services:", err));
-
-// Analytics
-fetch("https://tams-system.vercel.app/api/analytics")
-  .then(res => res.json())
-  .then(data => {
-    const container = document.querySelector("#analytics .content");
-
-    const revenue = document.createElement("p");
-    revenue.textContent = `Revenue (Yearly): ${data.revenue.join(", ")}`;
-
-    const tickets = document.createElement("p");
-    tickets.textContent = `Tickets Handled (Yearly): ${data.ticketsHandled.join(", ")}`;
-
-    container.appendChild(revenue);
-    container.appendChild(tickets);
-  })
-  .catch(err => console.error("Error fetching analytics:", err));
+document.addEventListener("DOMContentLoaded", loadAnalytics);
