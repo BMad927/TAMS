@@ -23,21 +23,22 @@
   <main>
     <section class="apply">
       <h2>Job Application</h2>
-      <form id="applyForm">
-        <label for="fullname">Full Name:</label>
-        <input type="text" id="fullname" name="fullname" required>
-
-        <label for="position">Position Applied For:</label>
-        <input type="text" id="position" name="position" required>
-
-        <label for="experience">Relevant Experience:</label>
-        <textarea id="experience" name="experience"></textarea>
-
-        <label for="resume">Upload Resume:</label>
-        <input type="file" id="resume" name="resume">
-
-        <button type="submit" class="btn">Submit Application</button>
+      <form id="apply-form">
+        <label for="apply-name">Full Name</label>
+        <input type="text" id="apply-name" name="name" autocomplete="name" required>
+      
+        <label for="apply-email">Email</label>
+        <input type="email" id="apply-email" name="email" autocomplete="email" required>
+      
+        <label for="apply-position">Position</label>
+        <input type="text" id="apply-position" name="position" autocomplete="organization-title" required>
+      
+        <label for="apply-resume">Resume (Link)</label>
+        <input type="url" id="apply-resume" name="resume" autocomplete="off" placeholder="Paste link to your resume" required>
+      
+        <button type="submit">Submit Application</button>
       </form>
+      
     </section>
   </main>
 
