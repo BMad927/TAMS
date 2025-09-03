@@ -38,7 +38,7 @@ renderAnalytics();
 // ---------------------------
 // Supabase Setup
 // ---------------------------
-import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+import { createClient } from "https://frmsjykcwzklqzaxfiyq.supabase.co";
 
 const SUPABASE_URL = "https://frmsjykcwzklqzaxfiyq.supabase.co";
 const SUPABASE_ANON_KEY =
