@@ -48,27 +48,37 @@ const supabase = createClient(supabaseUrl, supabaseKey)
 // ---------------------------
 // Contact Form Handler
 // ---------------------------
-const contactForm = document.getElementById("contactForm");
+// Initialize client
+const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-if (contactForm) {
-  contactForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
+// Contact form handler
+document.addEventListener("DOMContentLoaded", () => {
+  const contactForm = document.getElementById("contactForm");
 
-    const name = document.getElementById("contact-name").value;
-    const email = document.getElementById("contact-email").value;
-    const message = document.getElementById("contact-message").value;
+  if (contactForm) {
+    contactForm.addEventListener("submit", async (e) => {
+      e.preventDefault(); // stop page reload & query params in URL
 
-    const { error } = await supabase.from("contacts").insert([{ name, email, message }]);
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const message = document.getElementById("message").value;
 
-    if (error) {
-      alert("❌ Error saving contact: " + error.message);
-      console.error(error);
-    } else {
-      alert("✅ Message sent successfully!");
-      contactForm.reset();
-    }
-  });
-}
+      // Insert into Supabase
+      const { data, error } = await supabase
+        .from("contacts")
+        .insert([{ name, email, message }]);
+
+      if (error) {
+        console.error("Error inserting contact:", error.message);
+        alert("Something went wrong. Please try again!");
+      } else {
+        console.log("Message saved:", data);
+        alert("✅ Message sent successfully!");
+        contactForm.reset();
+      }
+    });
+  }
+});
 
 // ---------------------------
 // Job Application Form Handler
