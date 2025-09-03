@@ -36,13 +36,14 @@ function renderAnalytics() {
 renderAnalytics()
 
 // ---------------------------
-// Supabase Setup
+// Supabase Setup (Browser build)
 // ---------------------------
-import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm"
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2"
 
-const supabaseUrl = 'https://frmsjykcwzklqzaxfiyq.supabase.co'
-const supabaseKey = process.env.SUPABASE_KEY
-const supabase = createClient(supabaseUrl, supabaseKey)
+const SUPABASE_URL = "https://frmsjykcwzklqzaxfiyq.supabase.co"
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZybXNqeWtjd3prbHF6YXhmaXlxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY5MDgzMjEsImV4cCI6MjA3MjQ4NDMyMX0.v7pwM3qU8RzHKe0RYuMq0hSG95sKzwLH4LYCRvZyFNo"
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
 
 // ---------------------------
 // Contact Form Handler
@@ -54,15 +55,13 @@ document.getElementById("contact-form")?.addEventListener("submit", async (e) =>
   const email = document.getElementById("contact-email").value
   const message = document.getElementById("contact-message").value
 
-  const { data, error } = await supabase
+  const { error } = await supabase
     .from("contacts")
     .insert([{ name, email, message }])
-    .select()
-
-  console.log("📨 Contact form result:", { data, error })
 
   if (error) {
     alert("❌ Error saving contact: " + error.message)
+    console.error(error)
   } else {
     alert("✅ Message sent successfully!")
     e.target.reset()
@@ -80,15 +79,13 @@ document.getElementById("apply-form")?.addEventListener("submit", async (e) => {
   const position = document.getElementById("apply-position").value
   const resume = document.getElementById("apply-resume").value
 
-  const { data, error } = await supabase
+  const { error } = await supabase
     .from("applications")
     .insert([{ name, email, position, resume }])
-    .select()
-
-  console.log("📨 Application form result:", { data, error })
 
   if (error) {
     alert("❌ Error saving application: " + error.message)
+    console.error(error)
   } else {
     alert("✅ Application submitted successfully!")
     e.target.reset()
