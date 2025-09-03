@@ -1,100 +1,99 @@
-/* General Reset */
+/* Global Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
 
 body {
-  font-family: Arial, sans-serif;
   line-height: 1.6;
-  background: #f4f6f8;
+  background: #f9f9f9;
   color: #333;
 }
 
-/* Navbar */
+/* Header / Navbar */
 header {
-  background: #00509e;
-  color: #fff;
-  padding: 1rem 2rem;
+  background: #004080;
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+header h1 {
+  font-size: 1.5rem;
 }
 
 nav {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  gap: 15px;
 }
 
-nav h1 {
-  font-size: 1.5rem;
-}
-
-nav ul {
-  display: flex;
-  list-style: none;
-}
-
-nav ul li {
-  margin-left: 1rem;
-}
-
-nav ul li a {
-  color: #fff;
+nav a {
+  color: white;
   text-decoration: none;
-  padding: 0.5rem;
-  border-radius: 5px;
+  padding: 8px 14px;
+  border-radius: 4px;
+  transition: background 0.3s;
 }
 
-nav ul li a.active,
-nav ul li a:hover {
-  background: #003f7f;
+nav a:hover {
+  background: #0059b3;
 }
 
-/* Main Content */
-main {
-  padding: 2rem;
-  max-width: 800px;
-  margin: auto;
+nav a.active {
+  background: #0073e6;
+  font-weight: bold;
 }
 
-/* Forms */
-form {
+/* Hero Section (Home Page) */
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(to right, #004080, #0066cc);
+  color: white;
+}
+
+.hero h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.buttons {
   display: flex;
-  flex-direction: column;
-  margin-top: 1rem;
+  justify-content: center;
+  gap: 15px;
 }
 
-form label {
-  margin: 0.5rem 0 0.2rem;
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #0073e6;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background 0.3s;
 }
 
-form input,
-form textarea,
-form select {
-  padding: 0.5rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-form button {
-  background: #00509e;
-  color: #fff;
-  border: none;
-  padding: 0.7rem;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-form button:hover {
-  background: #003f7f;
+.btn:hover {
+  background: #005bb5;
 }
 
 /* Footer */
 footer {
   text-align: center;
-  padding: 1rem;
-  background: #00509e;
-  color: #fff;
-  margin-top: 2rem;
+  padding: 15px;
+  background: #004080;
+  color: white;
+  margin-top: 40px;
 }
