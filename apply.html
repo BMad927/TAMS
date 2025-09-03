@@ -3,58 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TAMS - Apply</title>
+  <title>Apply Now | TAMS</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
+    <h1>TAMS</h1>
     <nav>
-      <h1>TAMS</h1>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="apply.html" class="active">Apply</a></li>
-      </ul>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+      <a href="apply.html" class="active">Apply</a>
     </nav>
   </header>
 
   <main>
-    <h2>Apply for a Position</h2>
-    <form id="applyForm" method="POST">
-      <label for="fullName">Full Name</label>
-      <input type="text" id="fullName" name="fullName" required>
+    <section class="apply">
+      <h2>Job Application</h2>
+      <form id="applyForm">
+        <label for="fullname">Full Name:</label>
+        <input type="text" id="fullname" name="fullname" required>
 
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" required>
+        <label for="position">Position Applied For:</label>
+        <input type="text" id="position" name="position" required>
 
-      <label for="phone">Phone</label>
-      <input type="tel" id="phone" name="phone" required>
+        <label for="experience">Relevant Experience:</label>
+        <textarea id="experience" name="experience"></textarea>
 
-      <label for="role">Role Applied For</label>
-      <select id="role" name="role" required>
-        <option value="Stevedore">Stevedore</option>
-        <option value="Winch Operator">Winch Operator</option>
-        <option value="Payloader Operator">Payloader Operator</option>
-        <option value="Arrastre">Arrastre</option>
-        <option value="Kapatas">Kapatas</option>
-        <option value="Driver">Driver</option>
-        <option value="Palletizer">Palletizer</option>
-        <option value="Mooring">Mooring</option>
-      </select>
+        <label for="resume">Upload Resume:</label>
+        <input type="file" id="resume" name="resume">
 
-      <button type="submit">Submit Application</button>
-    </form>
-
-
-    <form id="apply-form">
-      <input type="text" id="apply-name" placeholder="Full Name" required>
-      <input type="email" id="apply-email" placeholder="Email" required>
-      <input type="text" id="apply-position" placeholder="Position Applying For" required>
-      <input type="text" id="apply-resume" placeholder="Resume (link or description)" required>
-      <button type="submit">Submit Application</button>
-    </form>
-    
+        <button type="submit" class="btn">Submit Application</button>
+      </form>
+    </section>
   </main>
 
   <footer>
