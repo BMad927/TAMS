@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/BMad927/TAMS/issues"
   },
-  "homepage": "https://github.com/BMad927/TAMS#readme"
+  "homepage": "https://github.com/BMad927/TAMS#readme",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.57.0"
+  }
 }

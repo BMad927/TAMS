@@ -3,49 +3,62 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TAMS – Apply</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>TAMS - Apply</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <h1>Apply to Join TAMS</h1>
     <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About & Services</a>
-      <a href="contact.html">Contact</a>
-      <a href="apply.html" class="active">Apply</a>
+      <h1>TAMS</h1>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="apply.html" class="active">Apply</a></li>
+      </ul>
     </nav>
   </header>
 
   <main>
-    <section class="apply">
-      <h2>Application Form</h2>
-      <form>
-        <label>Full Name:</label>
-        <input type="text" required>
-        <label>Email:</label>
-        <input type="email" required>
-        <label>Phone:</label>
-        <input type="text" required>
-        <label>Position Applying For:</label>
-        <select required>
-          <option value="">Select...</option>
-          <option>Stevedore</option>
-          <option>Winch Operator</option>
-          <option>Payloader Operator</option>
-          <option>Arrastre</option>
-          <option>Kapatas</option>
-          <option>Driver</option>
-          <option>Palletizer</option>
-          <option>Mooring</option>
-        </select>
-        <button type="submit">Submit Application</button>
-      </form>
-    </section>
+    <h2>Apply for a Position</h2>
+    <form id="applyForm" method="POST">
+      <label for="fullName">Full Name</label>
+      <input type="text" id="fullName" name="fullName" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="phone">Phone</label>
+      <input type="tel" id="phone" name="phone" required>
+
+      <label for="role">Role Applied For</label>
+      <select id="role" name="role" required>
+        <option value="Stevedore">Stevedore</option>
+        <option value="Winch Operator">Winch Operator</option>
+        <option value="Payloader Operator">Payloader Operator</option>
+        <option value="Arrastre">Arrastre</option>
+        <option value="Kapatas">Kapatas</option>
+        <option value="Driver">Driver</option>
+        <option value="Palletizer">Palletizer</option>
+        <option value="Mooring">Mooring</option>
+      </select>
+
+      <button type="submit">Submit Application</button>
+    </form>
+
+
+    <form id="apply-form">
+      <input type="text" id="apply-name" placeholder="Full Name" required>
+      <input type="email" id="apply-email" placeholder="Email" required>
+      <input type="text" id="apply-position" placeholder="Position Applying For" required>
+      <input type="text" id="apply-resume" placeholder="Resume (link or description)" required>
+      <button type="submit">Submit Application</button>
+    </form>
+    
   </main>
 
   <footer>
-    <p>&copy; 2025 TAMS. All Rights Reserved.</p>
+    <p>© 2025 TAMS Toledo. All rights reserved.</p>
   </footer>
 </body>
 </html>
