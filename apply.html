@@ -1,57 +1,58 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apply - TASS Manpower Services</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apply - TASS Manpower Services</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <header>
-    <h1><a href="index.html">TASS</a></h1>
-    <nav class="navbar">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="services.html">Services</a>
-        <a href="contact.html">Contact</a>
-        <a href="apply.html">Apply</a>
-    </nav>
-    <button id="theme-toggle" class="theme-toggle">🌙</button>
+  <h1><a href="index.html">TASS</a></h1>
+  <nav class="navbar">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="contact.html">Contact</a>
+    <a href="apply.html">Apply</a>
+  </nav>
+  <button id="theme-toggle" class="theme-toggle">🌙</button>
 </header>
 
 <main>
-    <section class="hero">
-        <h2>Apply for a Position</h2>
-        <p>Submit your application and upload your resume to join our team.</p>
-    </section>
+  <section class="hero">
+    <h2>Apply for a Position</h2>
+    <p>Submit your application and upload your resume to join our team.</p>
+  </section>
 
-    <section>
-        <form id="apply-form" enctype="multipart/form-data">
-            <label for="apply-name">Full Name</label>
-            <input type="text" id="apply-name" required>
+  <section>
+    <div class="card">
+      <form id="apply-form" enctype="multipart/form-data">
+        <label for="apply-name">Full Name</label>
+        <input type="text" id="apply-name" required>
 
-            <label for="apply-email">Email Address</label>
-            <input type="email" id="apply-email" required>
+        <label for="apply-email">Email Address</label>
+        <input type="email" id="apply-email" required>
 
-            <label for="apply-phone">Phone Number</label>
-            <input type="text" id="apply-phone" required>
+        <label for="apply-phone">Phone Number</label>
+        <input type="text" id="apply-phone" required>
 
-            <label for="apply-position">Position Applying For</label>
-            <input type="text" id="apply-position" required>
+        <label for="apply-position">Position Applying For</label>
+        <input type="text" id="apply-position" required>
 
-            <label for="apply-resume">Upload Resume</label>
-            <input type="file" id="apply-resume" accept=".pdf,.doc,.docx" required>
+        <label for="apply-resume">Upload Resume</label>
+        <input type="file" id="apply-resume" accept=".pdf,.doc,.docx" required>
 
-            <button type="submit" class="btn">Submit Application</button>
-        </form>
-    </section>
+        <button type="submit" class="btn">Submit Application</button>
+      </form>
+    </div>
+  </section>
 </main>
 
 <footer>
-    <p>&copy; 2025 TASS Manpower Services. All Rights Reserved.</p>
+  <p>&copy; 2025 TASS Manpower Services. All Rights Reserved.</p>
 </footer>
 
-<!-- Supabase CDN -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <script type="module" src="js/script.js"></script>
 </body>

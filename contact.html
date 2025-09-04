@@ -1,51 +1,52 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - TASS Manpower Services</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - TASS Manpower Services</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <header>
-    <h1><a href="index.html">TASS</a></h1>
-    <nav class="navbar">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="services.html">Services</a>
-        <a href="contact.html">Contact</a>
-        <a href="apply.html">Apply</a>
-    </nav>
-    <button id="theme-toggle" class="theme-toggle">🌙</button>
+  <h1><a href="index.html">TASS</a></h1>
+  <nav class="navbar">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="contact.html">Contact</a>
+    <a href="apply.html">Apply</a>
+  </nav>
+  <button id="theme-toggle" class="theme-toggle">🌙</button>
 </header>
 
 <main>
-    <section class="hero">
-        <h2>Contact Us</h2>
-        <p>Have questions or inquiries? Send us a message!</p>
-    </section>
+  <section class="hero">
+    <h2>Contact Us</h2>
+    <p>Have questions or inquiries? Send us a message!</p>
+  </section>
 
-    <section>
-        <form id="contact-form">
-            <label for="contact-name">Full Name</label>
-            <input type="text" id="contact-name" required>
+  <section>
+    <div class="card">
+      <form id="contact-form">
+        <label for="contact-name">Full Name</label>
+        <input type="text" id="contact-name" required>
 
-            <label for="contact-email">Email Address</label>
-            <input type="email" id="contact-email" required>
+        <label for="contact-email">Email Address</label>
+        <input type="email" id="contact-email" required>
 
-            <label for="contact-message">Message</label>
-            <textarea id="contact-message" rows="5" required></textarea>
+        <label for="contact-message">Message</label>
+        <textarea id="contact-message" rows="5" required></textarea>
 
-            <button type="submit" class="btn">Send Message</button>
-        </form>
-    </section>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+    </div>
+  </section>
 </main>
 
 <footer>
-    <p>&copy; 2025 TASS Manpower Services. All Rights Reserved.</p>
+  <p>&copy; 2025 TASS Manpower Services. All Rights Reserved.</p>
 </footer>
 
-<!-- Supabase CDN -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <script type="module" src="js/script.js"></script>
 </body>
