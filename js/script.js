@@ -1,18 +1,28 @@
 // -----------------------------
-// Supabase client
+// Supabase client (UMD CDN)
 // -----------------------------
 const SUPABASE_URL = 'https://frmsjykcwzklqzaxfiyq.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZybXNqeWtjd3prbHF6YXhmaXlxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY5MDgzMjEsImV4cCI6MjA3MjQ4NDMyMX0.v7pwM3qU8RzHKe0RYuMq0hSG95sKzwLH4LYCRvZyFNo';
-
-const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZybXNqeWtjd3prbHF6YXhmaXlxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY5MDgzMjEsImV4cCI6MjA3MjQ4NDMyMX0.v7pwM3qU8RzHKe0RYuMq0hSG95sKzwLH4LYCRvZyFNo'
+// UMD CDN exposes global Supabase object
+const supabaseClient = Supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // -----------------------------
-// Theme toggle
+// Theme toggle with persistence
 // -----------------------------
 const themeToggle = document.getElementById('theme-toggle');
+const html = document.documentElement;
+
+// Apply saved theme on load
+const savedTheme = localStorage.getItem('tass-theme');
+if (savedTheme) {
+  html.dataset.theme = savedTheme;
+}
+
+// Toggle theme and save
 themeToggle.addEventListener('click', () => {
-  const html = document.documentElement;
-  html.dataset.theme = html.dataset.theme === 'light' ? 'dark' : 'light';
+  const newTheme = html.dataset.theme === 'light' ? 'dark' : 'light';
+  html.dataset.theme = newTheme;
+  localStorage.setItem('tass-theme', newTheme);
 });
 
 // -----------------------------
@@ -26,7 +36,7 @@ if (contactForm) {
     const email = document.getElementById('contact-email').value;
     const message = document.getElementById('contact-message').value;
 
-    const { data, error } = await supabase
+    const { data, error } = await supabaseClient
       .from('contacts')
       .insert([{ name, email, message }]);
 
@@ -58,8 +68,8 @@ if (applyForm) {
     }
 
     // Upload resume to Supabase Storage
-    const { data: uploadData, error: uploadError } = await supabase.storage
-      .from('resumes') // Make sure you created this bucket
+    const { data: uploadData, error: uploadError } = await supabaseClient.storage
+      .from('resumes') // Make sure this bucket exists
       .upload(`resumes/${resumeFile.name}`, resumeFile, { upsert: true });
 
     if (uploadError) {
@@ -68,11 +78,11 @@ if (applyForm) {
     }
 
     // Get public URL
-    const { data: publicData } = supabase.storage.from('resumes').getPublicUrl(`resumes/${resumeFile.name}`);
+    const { data: publicData } = supabaseClient.storage.from('resumes').getPublicUrl(`resumes/${resumeFile.name}`);
     const resume_url = publicData.publicUrl;
 
     // Insert application into Supabase table
-    const { data, error } = await supabase
+    const { data, error } = await supabaseClient
       .from('applications')
       .insert([{ full_name: name, email, phone, position, resume_url }]);
 
