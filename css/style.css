@@ -70,7 +70,7 @@ header h1 a {
 .navbar a {
   text-decoration: none;
   color: var(--text);
-  padding: 6px 12px;
+  padding: 8px 14px;
   border-radius: 6px;
   transition: background 0.3s, color 0.3s;
 }
@@ -91,6 +91,16 @@ header h1 a {
   border-radius: 0 0 10px 10px;
 }
 
+#mobile-menu a {
+  padding: 8px 14px;
+  border-radius: 6px;
+  transition: background 0.3s;
+}
+
+#mobile-menu a:hover {
+  background: var(--secondary);
+}
+
 /* Mobile toggle button */
 #menu-button {
   display: none;
@@ -109,10 +119,11 @@ header h1 a {
 }
 
 /* Main / Sections */
-main, section {
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 20px;
+main section {
+  padding: 40px 20px;
+  margin: 20px auto;
+  border-radius: 10px;
+  max-width: 1000px;
 }
 
 /* Hero Section */
@@ -125,13 +136,13 @@ main, section {
 }
 
 .hero h2 {
+  margin-bottom: 20px;
   font-size: 2rem;
-  margin-bottom: 10px;
 }
 
 .hero p {
+  margin-bottom: 30px;
   font-size: 1.2rem;
-  margin-bottom: 20px;
 }
 
 /* Buttons */
@@ -176,6 +187,20 @@ input:focus, textarea:focus {
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s, background 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.03);
+  background: var(--accent);
+}
+
+/* Services Grid */
+#services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin: 40px auto;
 }
 
 /* Footer */
