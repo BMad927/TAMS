@@ -2,7 +2,7 @@
    THEME VARIABLES
 ============================== */
 :root[data-theme="light"] {
-  --text: hsl(0, 0%, 10%);
+  --text: hsl(0, 0%, 95%);
   --background: hsl(0, 0%, 10%);
   --primary: hsl(45, 60%, 50%);
   --secondary: hsl(45, 70%, 70%);
@@ -18,7 +18,7 @@
 }
 
 /* ==============================
-   RESET & GLOBAL STYLES
+   RESET & GLOBAL
 ============================== */
 * {
   margin: 0;
@@ -160,11 +160,13 @@ section {
   max-width: 900px;
   margin: 40px auto;
   padding: 20px;
+  background-color: var(--background);
+  color: var(--text);
 }
 
 section h2 {
   font-size: 2rem;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   color: var(--primary);
   text-align: center;
 }
