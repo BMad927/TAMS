@@ -2,19 +2,19 @@
 /* Theme Variables */
 /* ------------------------------ */
 :root[data-theme="light"] {
-  --text: #0c0c0a;
-  --background: #ffffff;
-  --primary: #c2ae48;
-  --secondary: #e8d781;
-  --accent: #f5d949;
+  --text: hsl(0, 0%, 10%);
+  --background: hsl(0, 0%, 95%);
+  --primary: hsl(45, 55%, 50%);
+  --secondary: hsl(45, 60%, 70%);
+  --accent: hsl(45, 80%, 60%);
 }
 
 :root[data-theme="dark"] {
-  --text: #f6f6f4;
-  --background: #000000;
-  --primary: #b8a33d;
-  --secondary: #7d6c17;
-  --accent: #b89b0a;
+  --text: hsl(0, 0%, 95%);
+  --background: hsl(0, 0%, 10%);
+  --primary: hsl(45, 55%, 45%);
+  --secondary: hsl(45, 60%, 30%);
+  --accent: hsl(45, 80%, 35%);
 }
 
 /* ------------------------------ */
@@ -37,6 +37,7 @@ body {
 a {
   text-decoration: none;
   color: inherit;
+  transition: color 0.3s, background 0.3s;
 }
 
 /* ------------------------------ */
@@ -45,13 +46,14 @@ a {
 header {
   background: var(--primary);
   color: var(--text);
-  padding: 15px 20px;
+  padding: 15px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: sticky;
   top: 0;
   z-index: 1000;
+  border-bottom: 2px solid var(--accent);
 }
 
 header h1 a {
@@ -62,30 +64,36 @@ header h1 a {
 
 nav.navbar {
   display: flex;
-  gap: 15px;
+  gap: 20px;
 }
 
 nav.navbar a {
   color: var(--text);
-  padding: 8px 14px;
-  border-radius: 4px;
-  transition: background 0.3s;
+  padding: 10px 16px;
+  border-radius: 8px;
+  transition: all 0.3s;
 }
 
 nav.navbar a:hover {
   background: var(--secondary);
+  transform: scale(1.05);
 }
 
+/* ------------------------------ */
+/* Theme Toggle Icon */
+/* ------------------------------ */
 .theme-toggle {
   background: transparent;
   border: none;
   cursor: pointer;
   color: var(--text);
-  transition: transform 0.2s;
+  font-size: 1.2rem;
+  transition: transform 0.2s, color 0.3s;
 }
 
 .theme-toggle:hover {
-  transform: scale(1.1);
+  transform: scale(1.2);
+  color: var(--accent);
 }
 
 /* ------------------------------ */
@@ -93,45 +101,43 @@ nav.navbar a:hover {
 /* ------------------------------ */
 .hero {
   text-align: center;
-  padding: 60px 20px;
+  padding: 80px 40px;
   background: linear-gradient(to right, var(--primary), var(--secondary));
   color: var(--text);
   border-radius: 10px;
-  margin-bottom: 40px;
+  margin: 40px auto;
+  max-width: 1000px;
 }
 
 .hero h2 {
-  font-size: 2rem;
-  margin-bottom: 10px;
+  font-size: 2.5rem;
+  margin-bottom: 15px;
 }
 
 .hero p {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
+  font-size: 1.3rem;
+  margin-bottom: 25px;
 }
 
 /* ------------------------------ */
-/* Container / Section Styling */
-/* ------------------------------ */
+/* Containers / Sections */
 main, section {
-  max-width: 900px;
+  max-width: 1000px;
   margin: 40px auto;
-  padding: 20px;
+  padding: 20px 40px;
   background: var(--background);
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 /* ------------------------------ */
 /* Buttons */
-/* ------------------------------ */
 .btn {
   display: inline-block;
-  padding: 10px 20px;
+  padding: 12px 24px;
   background: var(--primary);
   color: var(--text);
-  border-radius: 6px;
-  text-decoration: none;
+  border-radius: 8px;
   font-weight: 600;
   transition: all 0.3s;
 }
@@ -143,11 +149,10 @@ main, section {
 
 /* ------------------------------ */
 /* Forms */
-/* ------------------------------ */
 form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 18px;
 }
 
 form label {
@@ -156,9 +161,9 @@ form label {
 
 form input,
 form textarea {
-  padding: 10px;
+  padding: 12px;
   border: 1px solid #ccc;
-  border-radius: 6px;
+  border-radius: 8px;
   background: var(--background);
   color: var(--text);
   transition: border 0.3s, box-shadow 0.3s;
@@ -168,16 +173,16 @@ form input:focus,
 form textarea:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 5px var(--primary);
+  box-shadow: 0 0 6px var(--primary);
 }
 
 form button {
   width: fit-content;
-  padding: 10px 20px;
+  padding: 12px 24px;
   background: var(--primary);
   color: var(--text);
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s;
@@ -189,32 +194,49 @@ form button:hover {
 }
 
 /* ------------------------------ */
-/* Footer */
-/* ------------------------------ */
-footer {
-  text-align: center;
+/* Cards */
+.card {
   padding: 20px;
-  background: var(--primary);
-  color: var(--text);
-  margin-top: 40px;
-  border-radius: 8px 8px 0 0;
+  background: var(--background);
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
 }
 
 /* ------------------------------ */
-/* Responsive Adjustments */
+/* Footer */
+footer {
+  text-align: center;
+  padding: 25px 40px;
+  background: var(--primary);
+  color: var(--text);
+  margin-top: 40px;
+  border-radius: 12px 12px 0 0;
+}
+
 /* ------------------------------ */
+/* Responsive */
 @media (max-width: 768px) {
   header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
+    gap: 15px;
   }
 
   nav.navbar {
     flex-wrap: wrap;
   }
 
+  main, section {
+    padding: 20px;
+  }
+
   .hero {
-    padding: 40px 20px;
+    padding: 60px 20px;
   }
 }
