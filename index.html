@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TASS - Home</title>
-  <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TASS - Manpower Services</title>
+<link rel="stylesheet" href="style.css">
 </head>
-<body data-theme="light">
+<body>
 
 <header>
   <nav>
@@ -18,9 +18,9 @@
       <a href="apply.html">Apply</a>
     </div>
     <button id="menu-button">☰</button>
-    <button class="theme-toggle" id="theme-toggle">🌓</button>
+    <button id="theme-toggle">☀️</button>
   </nav>
-  <div id="mobile-menu" class="hidden">
+  <div id="mobile-menu">
     <a href="about.html">About</a>
     <a href="services.html">Services</a>
     <a href="contact.html">Contact</a>
@@ -29,26 +29,34 @@
 </header>
 
 <main>
-  <!-- Hero Section -->
   <section class="hero">
     <h2>Your Partner in Manpower Excellence in Toledo City</h2>
     <p>Providing skilled and dedicated workers to fuel the growth of industries in Cebu.</p>
     <a href="contact.html" class="btn">Contact Us Today</a>
   </section>
 
-  <!-- About Section -->
   <section id="about">
     <h2>About TASS</h2>
     <p>Based in Toledo City, Cebu, TASS is a leading manpower service provider committed to connecting skilled professionals with top-tier companies. We understand the unique needs of the local market and are dedicated to supporting the economic growth of our community.</p>
     <p>Our mission is to provide reliable, efficient, and professional workforce solutions that help our clients achieve their business goals while also creating rewarding employment opportunities for our people.</p>
   </section>
 
-  <!-- Services Section -->
   <section id="services">
     <h2>Our Services</h2>
-    <div class="card">Manpower Supply<br>We specialize in providing a skilled and reliable workforce tailored to the specific needs of various industries.</div>
-    <div class="card">Recruitment & Staffing<br>From sourcing to placement, we handle the entire recruitment process to find the perfect candidates for your team.</div>
-    <div class="card">Partnering with Atlas Fertilizer<br>We are proud to be a trusted manpower partner for Atlas Fertilizer in Toledo City, supplying the dedicated workers essential to their operations.</div>
+    <div class="cards-container">
+      <div class="card">
+        <h3>Manpower Supply</h3>
+        <p>We specialize in providing a skilled and reliable workforce tailored to the specific needs of various industries.</p>
+      </div>
+      <div class="card">
+        <h3>Recruitment & Staffing</h3>
+        <p>From sourcing to placement, we handle the entire recruitment process to find the perfect candidates for your team.</p>
+      </div>
+      <div class="card">
+        <h3>Partnering with Atlas Fertilizer</h3>
+        <p>We are proud to be a trusted manpower partner for Atlas Fertilizer in Toledo City, supplying the dedicated workers essential to their operations.</p>
+      </div>
+    </div>
   </section>
 </main>
 
@@ -57,8 +65,8 @@
   <p>Proudly serving Toledo City, Cebu and beyond.</p>
 </footer>
 
-<!-- Supabase CDN -->
+<!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
-<script src="js/script.js" type="module"></script>
+<script type="module" src="script.js"></script>
 </body>
 </html>

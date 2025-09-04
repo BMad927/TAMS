@@ -1,34 +1,30 @@
 // ==============================
-// SUPABASE SETUP
+// SUPABASE INIT
 // ==============================
 const SUPABASE_URL = 'https://frmsjykcwzklqzaxfiyq.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzYSIsInJlZiI6ImZybXNqeWtjd3prbHF6YXhmaXlxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY5MDgzMjEsImV4cCI6MjA3MjQ4NDMyMX0.v7pwM3qU8RzHKe0RYuMq0hSG95sKzwLH4LYCRvZyFNo';  
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZybXNqeWtjd3prbHF6YXhmaXlxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY5MDgzMjEsImV4cCI6MjA3MjQ4NDMyMX0.v7pwM3qU8RzHKe0RYuMq0hSG95sKzwLH4LYCRvZyFNo';
+
 const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // ==============================
 // THEME TOGGLE
 // ==============================
-const themeToggle = document.getElementById('theme-toggle');
+const themeButton = document.getElementById('theme-toggle');
+const html = document.documentElement;
 
-// Load saved theme or system preference
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme) {
-  document.documentElement.setAttribute('data-theme', savedTheme);
-} else {
-  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+function setTheme(theme) {
+  html.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
+  themeButton.textContent = theme === 'dark' ? '☀️' : '🌙';
 }
 
-function updateThemeIcon() {
-  themeToggle.textContent = document.documentElement.getAttribute('data-theme') === 'dark' ? '🌙' : '☀️';
-}
-updateThemeIcon();
+// Load saved theme
+const savedTheme = localStorage.getItem('theme') || 'light';
+setTheme(savedTheme);
 
-themeToggle.addEventListener('click', () => {
-  const newTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-  document.documentElement.setAttribute('data-theme', newTheme);
-  localStorage.setItem('theme', newTheme);
-  updateThemeIcon();
+themeButton.addEventListener('click', () => {
+  const current = html.getAttribute('data-theme');
+  setTheme(current === 'light' ? 'dark' : 'light');
 });
 
 // ==============================
@@ -38,23 +34,7 @@ const menuButton = document.getElementById('menu-button');
 const mobileMenu = document.getElementById('mobile-menu');
 
 menuButton.addEventListener('click', () => {
-  mobileMenu.classList.toggle('show');
-});
-
-// ==============================
-// HIDE NAVBAR ON SCROLL
-// ==============================
-let lastScroll = 0;
-const header = document.querySelector('header');
-
-window.addEventListener('scroll', () => {
-  const currentScroll = window.pageYOffset;
-  if (currentScroll > lastScroll && currentScroll > 50) {
-    header.style.top = '-100px';
-  } else {
-    header.style.top = '0';
-  }
-  lastScroll = currentScroll;
+  mobileMenu.classList.toggle('hidden');
 });
 
 // ==============================
@@ -72,9 +52,8 @@ if (contactForm) {
       .from('contacts')
       .insert([{ full_name, email, message }]);
 
-    if (error) {
-      alert('Error sending message: ' + error.message);
-    } else {
+    if (error) alert('Error sending message: ' + error.message);
+    else {
       alert('Message sent successfully!');
       contactForm.reset();
     }
@@ -111,9 +90,8 @@ if (applyForm) {
       .from('applications')
       .insert([{ full_name, email, phone, position, resume_url }]);
 
-    if (error) {
-      alert('Error submitting application: ' + error.message);
-    } else {
+    if (error) alert('Error submitting application: ' + error.message);
+    else {
       alert('Application submitted successfully!');
       applyForm.reset();
     }
