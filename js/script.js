@@ -3,23 +3,38 @@
 // -----------------------------
 const SUPABASE_URL = 'https://frmsjykcwzklqzaxfiyq.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZybXNqeWtjd3prbHF6YXhmaXlxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY5MDgzMjEsImV4cCI6MjA3MjQ4NDMyMX0.v7pwM3qU8RzHKe0RYuMq0hSG95sKzwLH4LYCRvZyFNo';
-// UMD CDN exposes global Supabase object
-const supabaseClient = Supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
+const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+// -----------------------------
+// Theme toggle with persistence
+// -----------------------------
 const themeToggle = document.getElementById('theme-toggle');
 const html = document.documentElement;
-
-// Apply saved theme on load
 const savedTheme = localStorage.getItem('tass-theme');
 if (savedTheme) html.dataset.theme = savedTheme;
 
-// Toggle theme and save
 themeToggle.addEventListener('click', () => {
   const newTheme = html.dataset.theme === 'light' ? 'dark' : 'light';
   html.dataset.theme = newTheme;
   localStorage.setItem('tass-theme', newTheme);
 });
 
+// -----------------------------
+// Navbar hide on scroll
+// -----------------------------
+let lastScroll = 0;
+const header = document.querySelector('header');
+
+window.addEventListener('scroll', () => {
+  const currentScroll = window.pageYOffset;
+  if (currentScroll > lastScroll) {
+    header.classList.add('hidden');
+  } else {
+    header.classList.remove('hidden');
+  }
+  lastScroll = currentScroll;
+});
 
 // -----------------------------
 // Contact form
@@ -63,9 +78,8 @@ if (applyForm) {
       return;
     }
 
-    // Upload resume to Supabase Storage
     const { data: uploadData, error: uploadError } = await supabaseClient.storage
-      .from('resumes') // Make sure this bucket exists
+      .from('resumes')
       .upload(`resumes/${resumeFile.name}`, resumeFile, { upsert: true });
 
     if (uploadError) {
@@ -73,11 +87,11 @@ if (applyForm) {
       return;
     }
 
-    // Get public URL
-    const { data: publicData } = supabaseClient.storage.from('resumes').getPublicUrl(`resumes/${resumeFile.name}`);
+    const { data: publicData } = supabaseClient.storage
+      .from('resumes')
+      .getPublicUrl(`resumes/${resumeFile.name}`);
     const resume_url = publicData.publicUrl;
 
-    // Insert application into Supabase table
     const { data, error } = await supabaseClient
       .from('applications')
       .insert([{ full_name: name, email, phone, position, resume_url }]);

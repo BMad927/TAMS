@@ -1,182 +1,130 @@
-/* ----------------------------
-   Theme Variables
------------------------------ */
+/* Theme Variables */
 :root[data-theme="light"] {
-  --text: hsl(0, 0%, 10%);
-  --background: hsl(0, 0%, 100%);
-  --primary: hsl(45, 60%, 60%);
-  --secondary: hsl(45, 60%, 80%);
-  --accent: hsl(45, 90%, 70%);
+  --text: hsl(0,0%,10%);
+  --background: #ffffff;
+  --primary: #c2ae48;
+  --secondary: #e8d781;
+  --accent: #f5d949;
 }
 
 :root[data-theme="dark"] {
-  /* ChatGPT's dark mode HSL approximation */
-  --text: hsl(210, 10%, 90%);
-  --background: hsl(210, 30%, 12%);
-  --primary: hsl(45, 60%, 50%);
-  --secondary: hsl(45, 60%, 30%);
-  --accent: hsl(45, 90%, 60%);
+  --text: #f6f6f4;
+  --background: #111111;
+  --primary: #b8a33d;
+  --secondary: #7d6c17;
+  --accent: #b89b0a;
 }
 
-/* ----------------------------
-   Reset & Base
------------------------------ */
+/* Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Inter', Arial, sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 body {
+  line-height: 1.6;
   background: var(--background);
   color: var(--text);
-  line-height: 1.6;
   transition: background 0.3s, color 0.3s;
 }
 
-/* ----------------------------
-   Header / Navbar
------------------------------ */
+/* Header / Navbar */
 header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background: var(--background);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: top 0.3s;
+}
+
+header.hidden {
+  top: -100px;
+}
+
+header nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 40px;
-  background: var(--primary);
-  color: var(--text);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+  max-width: 1200px;
+  margin: auto;
+  padding: 10px 20px;
 }
 
 header h1 a {
-  color: var(--text);
   text-decoration: none;
+  color: var(--primary);
+  font-weight: bold;
   font-size: 1.8rem;
-  font-weight: 700;
 }
 
-nav.navbar {
-  display: flex;
-  gap: 20px;
-}
-
-nav.navbar a {
-  color: var(--text);
+.navbar a {
   text-decoration: none;
-  padding: 8px 14px;
-  border-radius: 6px;
+  color: var(--text);
+  margin-left: 15px;
+  padding: 6px 10px;
+  border-radius: 4px;
   transition: background 0.3s;
 }
 
-nav.navbar a:hover {
+.navbar a:hover {
   background: var(--secondary);
 }
 
+/* Mobile menu */
+#mobile-menu {
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px 20px;
+}
+
+/* Theme toggle */
 .theme-toggle {
-  background: var(--secondary);
+  background: none;
   border: none;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   cursor: pointer;
-  transition: background 0.3s, transform 0.2s;
 }
 
-.theme-toggle:hover {
-  background: var(--accent);
-  transform: scale(1.1);
+/* Main / Sections */
+main, section {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
 }
 
-/* ----------------------------
-   Main / Sections
------------------------------ */
-main {
-  max-width: 1000px;
-  margin: 20px auto;
-  padding: 0 20px;
-}
-
-section.hero {
+/* Hero Section */
+.hero {
   text-align: center;
   padding: 60px 20px;
-  margin-bottom: 40px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  background: linear-gradient(to right, var(--primary), var(--secondary));
   color: var(--text);
+  border-radius: 10px;
 }
 
-section.hero h2 {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
+.hero h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
 }
 
-section.hero p {
+.hero p {
   font-size: 1.2rem;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
-section.hero .btn {
-  font-size: 1rem;
-  padding: 12px 24px;
-}
-
-/* ----------------------------
-   Cards
------------------------------ */
-.card {
-  background: var(--background);
-  padding: 25px;
-  margin-bottom: 25px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-}
-
-/* ----------------------------
-   Forms
------------------------------ */
-form label {
-  display: block;
-  margin-bottom: 6px;
-  font-weight: 500;
-}
-
-form input,
-form textarea {
-  width: 100%;
-  padding: 10px 12px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background: var(--background);
-  color: var(--text);
-  transition: border 0.3s;
-}
-
-form input:focus,
-form textarea:focus {
-  outline: none;
-  border-color: var(--primary);
-}
-
+/* Buttons */
 .btn {
   display: inline-block;
+  padding: 10px 20px;
   background: var(--primary);
   color: var(--text);
-  padding: 12px 25px;
-  border-radius: 8px;
+  border-radius: 6px;
   text-decoration: none;
-  font-weight: 600;
-  transition: background 0.3s, transform 0.2s;
-  cursor: pointer;
+  transition: all 0.3s;
 }
 
 .btn:hover {
@@ -184,49 +132,50 @@ form textarea:focus {
   transform: scale(1.05);
 }
 
-/* ----------------------------
-   Footer
------------------------------ */
+/* Forms */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+input, textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: var(--background);
+  color: var(--text);
+}
+
+input:focus, textarea:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+/* Card */
+.card {
+  background: var(--secondary);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Footer */
 footer {
   text-align: center;
-  padding: 20px;
+  padding: 15px;
   background: var(--primary);
   color: var(--text);
   margin-top: 40px;
-  border-radius: 12px 12px 0 0;
+  border-radius: 8px 8px 0 0;
 }
 
-/* ----------------------------
-   Responsive
------------------------------ */
+/* Responsive */
 @media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 15px 20px;
+  .navbar {
+    display: none;
   }
-
-  nav.navbar {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  nav.navbar a {
-    width: 100%;
-    text-align: center;
-    font-size: 1rem;
-    padding: 10px 0;
-  }
-
-  .theme-toggle {
-    align-self: flex-end;
-  }
-
-  section.hero h2 {
-    font-size: 2rem;
-  }
-
-  section.hero p {
-    font-size: 1rem;
+  #mobile-menu {
+    display: flex;
   }
 }
