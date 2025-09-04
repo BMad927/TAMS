@@ -1,32 +1,30 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TASS - Manpower Services</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TASS - Home</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
 <header>
-  <nav>
-    <h1><a href="index.html">TASS</a></h1>
-    <div class="navbar">
-      <a href="about.html">About</a>
-      <a href="services.html">Services</a>
-      <a href="contact.html">Contact</a>
-      <a href="apply.html">Apply</a>
-    </div>
-    <button id="menu-button">☰</button>
-    <button id="theme-toggle">☀️</button>
-  </nav>
-  <div id="mobile-menu">
+  <h1><a href="index.html">TASS</a></h1>
+  <nav class="navbar">
     <a href="about.html">About</a>
     <a href="services.html">Services</a>
     <a href="contact.html">Contact</a>
     <a href="apply.html">Apply</a>
-  </div>
+  </nav>
+  <button id="theme-toggle">🌙</button>
+  <button id="menu-button">☰</button>
 </header>
+
+<div id="mobile-menu">
+  <a href="about.html">About</a>
+  <a href="services.html">Services</a>
+  <a href="contact.html">Contact</a>
+  <a href="apply.html">Apply</a>
+</div>
 
 <main>
   <section class="hero">
@@ -35,13 +33,12 @@
     <a href="contact.html" class="btn">Contact Us Today</a>
   </section>
 
-  <section id="about">
+  <section>
     <h2>About TASS</h2>
-    <p>Based in Toledo City, Cebu, TASS is a leading manpower service provider committed to connecting skilled professionals with top-tier companies. We understand the unique needs of the local market and are dedicated to supporting the economic growth of our community.</p>
-    <p>Our mission is to provide reliable, efficient, and professional workforce solutions that help our clients achieve their business goals while also creating rewarding employment opportunities for our people.</p>
+    <p>Based in Toledo City, Cebu, TASS is a leading manpower service provider committed to connecting skilled professionals with top-tier companies. Our mission is to provide reliable, efficient, and professional workforce solutions.</p>
   </section>
 
-  <section id="services">
+  <section>
     <h2>Our Services</h2>
     <div class="cards-container">
       <div class="card">
@@ -61,11 +58,9 @@
 </main>
 
 <footer>
-  <p>&copy; 2025 TASS Manpower Services. All Rights Reserved.</p>
-  <p>Proudly serving Toledo City, Cebu and beyond.</p>
+  <p>&copy; 2024 TASS Manpower Services. All Rights Reserved.</p>
 </footer>
 
-<!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <script type="module" src="script.js"></script>
 </body>

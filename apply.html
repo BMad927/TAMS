@@ -1,41 +1,39 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Apply - TASS Manpower Services</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apply - TASS</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
 <header>
-  <nav>
-    <h1><a href="index.html">TASS</a></h1>
-    <div class="navbar">
-      <a href="about.html">About</a>
-      <a href="services.html">Services</a>
-      <a href="contact.html">Contact</a>
-      <a href="apply.html">Apply</a>
-    </div>
-    <button id="menu-button">☰</button>
-    <button id="theme-toggle">☀️</button>
-  </nav>
-  <div id="mobile-menu">
+  <h1><a href="index.html">TASS</a></h1>
+  <nav class="navbar">
+    <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="services.html">Services</a>
     <a href="contact.html">Contact</a>
-    <a href="apply.html">Apply</a>
-  </div>
+  </nav>
+  <button id="theme-toggle">🌙</button>
+  <button id="menu-button">☰</button>
 </header>
+
+<div id="mobile-menu">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="services.html">Services</a>
+  <a href="contact.html">Contact</a>
+</div>
 
 <main>
   <section>
-    <h2>Apply Now</h2>
-    <form id="apply-form">
+    <h2>Apply for a Position</h2>
+    <form id="apply-form" enctype="multipart/form-data">
       <input type="text" id="apply-name" placeholder="Full Name" required>
       <input type="email" id="apply-email" placeholder="Email" required>
       <input type="text" id="apply-phone" placeholder="Phone Number" required>
-      <input type="text" id="apply-position" placeholder="Position" required>
+      <input type="text" id="apply-position" placeholder="Position Applying For" required>
       <input type="file" id="apply-resume" accept=".pdf,.doc,.docx" required>
       <button type="submit" class="btn">Submit Application</button>
     </form>
@@ -43,8 +41,7 @@
 </main>
 
 <footer>
-  <p>&copy; 2025 TASS Manpower Services. All Rights Reserved.</p>
-  <p>Proudly serving Toledo City, Cebu and beyond.</p>
+  <p>&copy; 2024 TASS Manpower Services. All Rights Reserved.</p>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>

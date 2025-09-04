@@ -2,24 +2,22 @@
    THEME VARIABLES
 ============================= */
 :root[data-theme="light"] {
-  --text: hsl(0, 0%, 90%);
-  --background: hsl(0, 0%, 10%);
-  --primary: hsl(45, 80%, 50%);
-  --secondary: hsl(45, 60%, 65%);
-  --accent: hsl(45, 90%, 60%);
+  --text: hsl(0,0%,90%);
+  --background: hsl(0,0%,10%);
+  --primary: hsl(45,80%,50%);
+  --secondary: hsl(45,60%,65%);
+  --accent: hsl(45,90%,60%);
 }
 
 :root[data-theme="dark"] {
   --text: hsl(0,0%,95%);
   --background: hsl(0,0%,10%);
-  --primary: hsl(45, 80%, 50%);
-  --secondary: hsl(45, 60%, 65%);
-  --accent: hsl(45, 90%, 60%);
+  --primary: hsl(45,80%,50%);
+  --secondary: hsl(45,60%,65%);
+  --accent: hsl(45,90%,60%);
 }
 
-/* =============================
-   RESET
-============================= */
+/* RESET */
 * {
   margin: 0;
   padding: 0;
@@ -34,9 +32,7 @@ body {
   transition: background 0.3s, color 0.3s;
 }
 
-/* =============================
-   HEADER / NAVBAR
-============================= */
+/* HEADER / NAVBAR */
 header {
   position: sticky;
   top: 0;
@@ -44,12 +40,9 @@ header {
   background: var(--background);
   padding: 10px 20px;
   border-bottom: 1px solid var(--primary);
-}
-
-header nav {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
 }
 
 header h1 a {
@@ -92,9 +85,7 @@ header h1 a {
   margin: 5px 0;
 }
 
-/* =============================
-   HERO
-============================= */
+/* HERO */
 .hero {
   text-align: center;
   padding: 60px 20px;
@@ -130,9 +121,7 @@ header h1 a {
   color: var(--text);
 }
 
-/* =============================
-   SECTIONS
-============================= */
+/* SECTIONS */
 section {
   max-width: 900px;
   margin: 40px auto;
@@ -145,9 +134,7 @@ h2 {
   text-align: center;
 }
 
-/* =============================
-   SERVICES CARDS
-============================= */
+/* SERVICES CARDS */
 .cards-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -172,9 +159,7 @@ h2 {
   color: var(--primary);
 }
 
-/* =============================
-   FORMS
-============================= */
+/* FORMS */
 form {
   display: flex;
   flex-direction: column;
@@ -196,9 +181,7 @@ form button {
   margin: 0 auto;
 }
 
-/* =============================
-   FOOTER
-============================= */
+/* FOOTER */
 footer {
   text-align: center;
   padding: 20px;
@@ -208,14 +191,18 @@ footer {
   border-radius: 8px 8px 0 0;
 }
 
-/* =============================
-   RESPONSIVE
-============================= */
+/* RESPONSIVE */
 @media (max-width: 768px) {
   .navbar {
     display: none;
   }
   #mobile-menu {
     display: flex;
+  }
+  .hero h2 {
+    font-size: 2rem;
+  }
+  .hero p {
+    font-size: 1rem;
   }
 }
