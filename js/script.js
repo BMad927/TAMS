@@ -6,17 +6,12 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 // UMD CDN exposes global Supabase object
 const supabaseClient = Supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-// -----------------------------
-// Theme toggle with persistence
-// -----------------------------
 const themeToggle = document.getElementById('theme-toggle');
 const html = document.documentElement;
 
 // Apply saved theme on load
 const savedTheme = localStorage.getItem('tass-theme');
-if (savedTheme) {
-  html.dataset.theme = savedTheme;
-}
+if (savedTheme) html.dataset.theme = savedTheme;
 
 // Toggle theme and save
 themeToggle.addEventListener('click', () => {
@@ -24,6 +19,7 @@ themeToggle.addEventListener('click', () => {
   html.dataset.theme = newTheme;
   localStorage.setItem('tass-theme', newTheme);
 });
+
 
 // -----------------------------
 // Contact form
