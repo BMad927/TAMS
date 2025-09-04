@@ -7,42 +7,32 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <h1><a href="index.html">TASS</a></h1>
-  <nav class="navbar">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="services.html">Services</a>
-    <a href="apply.html">Apply</a>
-  </nav>
-  <button id="theme-toggle">🌙</button>
-  <button id="menu-button">☰</button>
-</header>
+  <header>
+    <h1><a href="index.html">TASS</a></h1>
+    <nav class="navbar">
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html" class="active">Contact</a>
+      <a href="apply.html">Apply</a>
+    </nav>
+    <button id="menu-button">☰</button>
+    <button id="theme-toggle">🌓</button>
+  </header>
+  <div id="mobile-menu" class="navbar"></div>
 
-<div id="mobile-menu">
-  <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="services.html">Services</a>
-  <a href="apply.html">Apply</a>
-</div>
-
-<main>
-  <section>
+  <main>
     <h2>Contact Us</h2>
     <form id="contact-form">
       <input type="text" id="contact-name" placeholder="Full Name" required>
       <input type="email" id="contact-email" placeholder="Email" required>
-      <textarea id="contact-message" placeholder="Message" rows="4" required></textarea>
+      <textarea id="contact-message" placeholder="Message" required></textarea>
       <button type="submit" class="btn">Send Message</button>
     </form>
-  </section>
-</main>
+  </main>
 
-<footer>
-  <p>&copy; 2024 TASS Manpower Services. All Rights Reserved.</p>
-</footer>
+  <footer><p>&copy; 2024 TASS Manpower Services</p></footer>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
-<script type="module" src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

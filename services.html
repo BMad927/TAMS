@@ -7,50 +7,29 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <h1><a href="index.html">TASS</a></h1>
-  <nav class="navbar">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="apply.html">Apply</a>
-  </nav>
-  <button id="theme-toggle">🌙</button>
-  <button id="menu-button">☰</button>
-</header>
+  <header>
+    <h1><a href="index.html">TASS</a></h1>
+    <nav class="navbar">
+      <a href="about.html">About</a>
+      <a href="services.html" class="active">Services</a>
+      <a href="contact.html">Contact</a>
+      <a href="apply.html">Apply</a>
+    </nav>
+    <button id="menu-button">☰</button>
+    <button id="theme-toggle">🌓</button>
+  </header>
+  <div id="mobile-menu" class="navbar"></div>
 
-<div id="mobile-menu">
-  <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="contact.html">Contact</a>
-  <a href="apply.html">Apply</a>
-</div>
-
-<main>
-  <section>
+  <main>
     <h2>Our Services</h2>
     <div class="cards-container">
-      <div class="card">
-        <h3>Manpower Supply</h3>
-        <p>We specialize in providing a skilled and reliable workforce tailored to the specific needs of various industries.</p>
-      </div>
-      <div class="card">
-        <h3>Recruitment & Staffing</h3>
-        <p>From sourcing to placement, we handle the entire recruitment process to find the perfect candidates for your team.</p>
-      </div>
-      <div class="card">
-        <h3>Partnering with Atlas Fertilizer</h3>
-        <p>We are proud to be a trusted manpower partner for Atlas Fertilizer in Toledo City, supplying the dedicated workers essential to their operations.</p>
-      </div>
+      <div class="card"><h3>Manpower Supply</h3><p>We provide skilled and reliable workforce...</p></div>
+      <div class="card"><h3>Recruitment & Staffing</h3><p>We handle the full recruitment process...</p></div>
+      <div class="card"><h3>Partnering with Atlas Fertilizer</h3><p>Proud manpower partner of Atlas Fertilizer.</p></div>
     </div>
-  </section>
-</main>
+  </main>
 
-<footer>
-  <p>&copy; 2024 TASS Manpower Services. All Rights Reserved.</p>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
-<script type="module" src="script.js"></script>
+  <footer><p>&copy; 2024 TASS Manpower Services</p></footer>
+  <script src="script.js"></script>
 </body>
 </html>

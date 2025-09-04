@@ -5,63 +5,54 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TASS - Home</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<header>
-  <h1><a href="index.html">TASS</a></h1>
-  <nav class="navbar">
-    <a href="about.html">About</a>
-    <a href="services.html">Services</a>
-    <a href="contact.html">Contact</a>
-    <a href="apply.html">Apply</a>
-  </nav>
-  <button id="theme-toggle">🌙</button>
-  <button id="menu-button">☰</button>
-</header>
+  <header>
+    <h1><a href="index.html">TASS</a></h1>
+    <nav class="navbar">
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+      <a href="apply.html">Apply</a>
+    </nav>
+    <button id="menu-button">☰</button>
+    <button id="theme-toggle">🌓</button>
+  </header>
+  <div id="mobile-menu" class="navbar"></div>
 
-<div id="mobile-menu">
-  <a href="about.html">About</a>
-  <a href="services.html">Services</a>
-  <a href="contact.html">Contact</a>
-  <a href="apply.html">Apply</a>
-</div>
+  <main>
+    <section class="hero">
+      <h2>Your Partner in Manpower Excellence</h2>
+      <p>Providing skilled and dedicated workers to fuel the growth of industries in Cebu.</p>
+      <a href="apply.html" class="btn">Apply Now</a>
+      <a href="contact.html" class="btn">Contact Us</a>
+    </section>
 
-<main>
-  <section class="hero">
-    <h2>Your Partner in Manpower Excellence in Toledo City</h2>
-    <p>Providing skilled and dedicated workers to fuel the growth of industries in Cebu.</p>
-    <a href="contact.html" class="btn">Contact Us Today</a>
-  </section>
+    <section>
+      <h2>About TASS</h2>
+      <p>Based in Toledo City, Cebu, TASS is a leading manpower service provider committed to connecting skilled professionals with top-tier companies.</p>
+      <p>Our mission is to provide reliable, efficient, and professional workforce solutions that help our clients achieve their business goals while also creating rewarding employment opportunities.</p>
+    </section>
 
-  <section>
-    <h2>About TASS</h2>
-    <p>Based in Toledo City, Cebu, TASS is a leading manpower service provider committed to connecting skilled professionals with top-tier companies. Our mission is to provide reliable, efficient, and professional workforce solutions.</p>
-  </section>
-
-  <section>
-    <h2>Our Services</h2>
-    <div class="cards-container">
-      <div class="card">
-        <h3>Manpower Supply</h3>
-        <p>We specialize in providing a skilled and reliable workforce tailored to the specific needs of various industries.</p>
+    <section>
+      <h2>Our Services</h2>
+      <div class="cards-container">
+        <div class="card"><h3>Manpower Supply</h3><p>Providing skilled workforce tailored to industry needs.</p></div>
+        <div class="card"><h3>Recruitment & Staffing</h3><p>From sourcing to placement, we handle the entire process.</p></div>
+        <div class="card"><h3>Partnering with Atlas Fertilizer</h3><p>Trusted manpower partner for Atlas Fertilizer in Toledo City.</p></div>
       </div>
-      <div class="card">
-        <h3>Recruitment & Staffing</h3>
-        <p>From sourcing to placement, we handle the entire recruitment process to find the perfect candidates for your team.</p>
-      </div>
-      <div class="card">
-        <h3>Partnering with Atlas Fertilizer</h3>
-        <p>We are proud to be a trusted manpower partner for Atlas Fertilizer in Toledo City, supplying the dedicated workers essential to their operations.</p>
-      </div>
-    </div>
-  </section>
-</main>
+    </section>
+  </main>
 
-<footer>
-  <p>&copy; 2024 TASS Manpower Services. All Rights Reserved.</p>
-</footer>
+  <footer>
+    <p>&copy; 2024 TASS Manpower Services</p>
+  </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
-<script type="module" src="script.js"></script>
+  <!-- Supabase CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <!-- Your Script -->
+  <script src="script.js"></script>
 </body>
 </html>
