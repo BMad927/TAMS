@@ -1,43 +1,34 @@
-// ------------------------------
-// Supabase Initialization
-// ------------------------------
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
-
+// -----------------------------
+// Supabase client
+// -----------------------------
 const SUPABASE_URL = 'https://frmsjykcwzklqzaxfiyq.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZybXNqeWtjd3prbHF6YXhmaXlxIiwicm9sZSI6ImFub25iYXMiLCJpYXQiOjE3NTY5MDgzMjEsImV4cCI6MjA3MjQ4NDMyMX0.v7pwM3qU8RzHKe0RYuMq0hSG95sKzwLH4LYCRvZyFNo';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZybXNqeWtjd3prbHF6YXhmaXlxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY5MDgzMjEsImV4cCI6MjA3MjQ4NDMyMX0.v7pwM3qU8RzHKe0RYuMq0hSG95sKzwLH4LYCRvZyFNo';
 
-const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-// ------------------------------
-// Theme Toggle
-// ------------------------------
+// -----------------------------
+// Theme toggle
+// -----------------------------
 const themeToggle = document.getElementById('theme-toggle');
-const htmlEl = document.documentElement;
+themeToggle.addEventListener('click', () => {
+  const html = document.documentElement;
+  html.dataset.theme = html.dataset.theme === 'light' ? 'dark' : 'light';
+});
 
-if (themeToggle) {
-  themeToggle.addEventListener('click', () => {
-    const currentTheme = htmlEl.getAttribute('data-theme');
-    if (currentTheme === 'light') {
-      htmlEl.setAttribute('data-theme', 'dark');
-    } else {
-      htmlEl.setAttribute('data-theme', 'light');
-    }
-  });
-}
-
-// ------------------------------
-// Contact Form Submission
-// ------------------------------
+// -----------------------------
+// Contact form
+// -----------------------------
 const contactForm = document.getElementById('contact-form');
 if (contactForm) {
   contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-
     const name = document.getElementById('contact-name').value;
     const email = document.getElementById('contact-email').value;
     const message = document.getElementById('contact-message').value;
 
-    const { error } = await supabase.from('contacts').insert([{ name, email, message }]);
+    const { data, error } = await supabase
+      .from('contacts')
+      .insert([{ name, email, message }]);
 
     if (error) {
       alert('Error sending message: ' + error.message);
@@ -48,55 +39,42 @@ if (contactForm) {
   });
 }
 
-// ------------------------------
-// Apply Form Submission
-// ------------------------------
+// -----------------------------
+// Apply form
+// -----------------------------
 const applyForm = document.getElementById('apply-form');
 if (applyForm) {
   applyForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-
-    const fullName = document.getElementById('apply-name').value;
+    const name = document.getElementById('apply-name').value;
     const email = document.getElementById('apply-email').value;
     const phone = document.getElementById('apply-phone').value;
     const position = document.getElementById('apply-position').value;
-    const resumeInput = document.getElementById('apply-resume');
-    let resumeUrl = null;
+    const resumeFile = document.getElementById('apply-resume').files[0];
 
-    const BUCKET_NAME = 'resumes';
-
-    // Ensure bucket exists
-    const { data: buckets } = await supabase.storage.listBuckets();
-    const bucketExists = buckets.some(b => b.name === BUCKET_NAME);
-    if (!bucketExists) {
-      const { error: createError } = await supabase.storage.createBucket(BUCKET_NAME, { public: true });
-      if (createError) {
-        alert('Error creating storage bucket: ' + createError.message);
-        return;
-      }
+    if (!resumeFile) {
+      alert('Please upload a resume file.');
+      return;
     }
 
-    // Upload resume file if exists
-    if (resumeInput.files.length > 0) {
-      const file = resumeInput.files[0];
-      const { data, error: uploadError } = await supabase.storage
-        .from(BUCKET_NAME)
-        .upload(`resumes/${Date.now()}_${file.name}`, file);
+    // Upload resume to Supabase Storage
+    const { data: uploadData, error: uploadError } = await supabase.storage
+      .from('resumes') // Make sure you created this bucket
+      .upload(`resumes/${resumeFile.name}`, resumeFile, { upsert: true });
 
-      if (uploadError) {
-        alert('Error uploading resume: ' + uploadError.message);
-        return;
-      }
-
-      // Get public URL
-      const { publicUrl } = supabase.storage.from(BUCKET_NAME).getPublicUrl(data.path);
-      resumeUrl = publicUrl;
+    if (uploadError) {
+      alert('Error uploading resume: ' + uploadError.message);
+      return;
     }
 
-    // Insert into Supabase including phone number and resume_url
-    const { error } = await supabase.from('applications').insert([
-      { full_name: fullName, email, position, phone, resume_url: resumeUrl }
-    ]);
+    // Get public URL
+    const { data: publicData } = supabase.storage.from('resumes').getPublicUrl(`resumes/${resumeFile.name}`);
+    const resume_url = publicData.publicUrl;
+
+    // Insert application into Supabase table
+    const { data, error } = await supabase
+      .from('applications')
+      .insert([{ full_name: name, email, phone, position, resume_url }]);
 
     if (error) {
       alert('Error submitting application: ' + error.message);
