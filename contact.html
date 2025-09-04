@@ -6,7 +6,7 @@
   <title>TASS - Contact</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body data-theme="light">
 
 <header>
   <nav>
@@ -30,11 +30,11 @@
 
 <main>
   <section>
-    <h2>Get in Touch</h2>
+    <h2>Contact Us</h2>
     <form id="contact-form">
       <input type="text" id="contact-name" placeholder="Full Name" required>
-      <input type="email" id="contact-email" placeholder="Email Address" required>
-      <textarea id="contact-message" placeholder="Message" rows="5" required></textarea>
+      <input type="email" id="contact-email" placeholder="Email" required>
+      <textarea id="contact-message" placeholder="Your Message" rows="4" required></textarea>
       <button type="submit" class="btn">Send Message</button>
     </form>
   </section>
@@ -42,10 +42,10 @@
 
 <footer>
   <p>&copy; 2025 TASS Manpower Services. All Rights Reserved.</p>
-  <p>Proudly serving Toledo City, Cebu and beyond.</p>
 </footer>
 
+<!-- Supabase CDN -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
-<script src="js/script.js" defer></script>
+<script src="js/script.js" type="module"></script>
 </body>
 </html>
