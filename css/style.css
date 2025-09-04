@@ -2,19 +2,19 @@
    THEME VARIABLES
 ============================== */
 :root[data-theme="light"] {
-  --text: hsl(0, 0%, 95%);
+  --text: #0c0c0a;
   --background: hsl(0, 0%, 10%);
-  --primary: hsl(45, 60%, 50%);
-  --secondary: hsl(45, 70%, 70%);
-  --accent: hsl(45, 90%, 85%);
+  --primary: #c2ae48;
+  --secondary: #e8d781;
+  --accent: #f5d949;
 }
 
 :root[data-theme="dark"] {
-  --text: hsl(0, 0%, 95%);
-  --background: hsl(210, 15%, 10%);
-  --primary: hsl(45, 60%, 45%);
-  --secondary: hsl(45, 50%, 35%);
-  --accent: hsl(45, 80%, 30%);
+  --text: #f6f6f4;
+  --background: #000000;
+  --primary: #b8a33d;
+  --secondary: #7d6c17;
+  --accent: #b89b0a;
 }
 
 /* ==============================

@@ -2,32 +2,31 @@
 // SUPABASE SETUP
 // ==============================
 const SUPABASE_URL = 'https://frmsjykcwzklqzaxfiyq.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzYSIsInJlZiI6ImZybXNqeWtjd3prbHF6YXhmaXlxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY5MDgzMjEsImV4cCI6MjA3MjQ4NDMyMX0.v7pwM3qU8RzHKe0RYuMq0hSG95sKzwLH4LYCRvZyFNo';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzYSIsInJlZiI6ImZybXNqeWtjd3prbHF6YXhmaXlxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY5MDgzMjEsImV4cCI6MjA3MjQ4NDMyMX0.v7pwM3qU8RzHKe0RYuMq0hSG95sKzwLH4LYCRvZyFNo';  
 const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // ==============================
 // THEME TOGGLE
 // ==============================
 const themeToggle = document.getElementById('theme-toggle');
-const root = document.documentElement;
 
 // Load saved theme or system preference
 const savedTheme = localStorage.getItem('theme');
 if (savedTheme) {
-  root.setAttribute('data-theme', savedTheme);
+  document.documentElement.setAttribute('data-theme', savedTheme);
 } else {
   const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  root.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
 }
 
 function updateThemeIcon() {
-  themeToggle.textContent = root.getAttribute('data-theme') === 'dark' ? '🌙' : '☀️';
+  themeToggle.textContent = document.documentElement.getAttribute('data-theme') === 'dark' ? '🌙' : '☀️';
 }
 updateThemeIcon();
 
 themeToggle.addEventListener('click', () => {
-  const newTheme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-  root.setAttribute('data-theme', newTheme);
+  const newTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', newTheme);
   localStorage.setItem('theme', newTheme);
   updateThemeIcon();
 });
@@ -69,7 +68,10 @@ if (contactForm) {
     const email = document.getElementById('contact-email').value;
     const message = document.getElementById('contact-message').value;
 
-    const { error } = await supabase.from('contacts').insert([{ full_name, email, message }]);
+    const { error } = await supabase
+      .from('contacts')
+      .insert([{ full_name, email, message }]);
+
     if (error) {
       alert('Error sending message: ' + error.message);
     } else {
@@ -92,41 +94,25 @@ if (applyForm) {
     const position = document.getElementById('apply-position').value;
     const resumeFile = document.getElementById('apply-resume').files[0];
 
-    if (!resumeFile) {
-      alert('Please select a resume file.');
-      return;
+    let resume_url = '';
+    if (resumeFile) {
+      const { data, error } = await supabase.storage
+        .from('resumes')
+        .upload(`resumes/${Date.now()}_${resumeFile.name}`, resumeFile);
+
+      if (error) {
+        alert('Error uploading resume: ' + error.message);
+        return;
+      }
+      resume_url = data.path;
     }
 
-    const fileExt = resumeFile.name.split('.').pop();
-    const fileName = `${full_name.replace(/\s+/g,'_')}_${Date.now()}.${fileExt}`;
-    const { data, error: uploadError } = await supabase.storage
-      .from('resumes')
-      .upload(fileName, resumeFile);
+    const { error } = await supabase
+      .from('applications')
+      .insert([{ full_name, email, phone, position, resume_url }]);
 
-    if (uploadError) {
-      alert('Error uploading resume: ' + uploadError.message);
-      return;
-    }
-
-    const { publicUrl, error: urlError } = supabase.storage
-      .from('resumes')
-      .getPublicUrl(fileName);
-
-    if (urlError) {
-      alert('Error getting resume URL: ' + urlError.message);
-      return;
-    }
-
-    const { error: insertError } = await supabase.from('applications').insert([{
-      full_name,
-      email,
-      phone,
-      position,
-      resume_url: publicUrl
-    }]);
-
-    if (insertError) {
-      alert('Error submitting application: ' + insertError.message);
+    if (error) {
+      alert('Error submitting application: ' + error.message);
     } else {
       alert('Application submitted successfully!');
       applyForm.reset();
