@@ -1,25 +1,26 @@
-/* ------------------------------ */
-/* Theme Variables */
-/* ------------------------------ */
+/* ----------------------------
+   Theme Variables
+----------------------------- */
 :root[data-theme="light"] {
   --text: hsl(0, 0%, 10%);
-  --background: hsl(0, 0%, 95%);
-  --primary: hsl(45, 55%, 50%);
-  --secondary: hsl(45, 60%, 70%);
-  --accent: hsl(45, 80%, 60%);
+  --background: hsl(0, 0%, 100%);
+  --primary: hsl(45, 60%, 60%);
+  --secondary: hsl(45, 60%, 80%);
+  --accent: hsl(45, 90%, 70%);
 }
 
 :root[data-theme="dark"] {
-  --text: hsl(0, 0%, 95%);
-  --background: hsl(0, 0%, 10%);
-  --primary: hsl(45, 55%, 45%);
+  /* ChatGPT's dark mode HSL approximation */
+  --text: hsl(210, 10%, 90%);
+  --background: hsl(210, 30%, 12%);
+  --primary: hsl(45, 60%, 50%);
   --secondary: hsl(45, 60%, 30%);
-  --accent: hsl(45, 80%, 35%);
+  --accent: hsl(45, 90%, 60%);
 }
 
-/* ------------------------------ */
-/* Reset / Base Styles */
-/* ------------------------------ */
+/* ----------------------------
+   Reset & Base
+----------------------------- */
 * {
   margin: 0;
   padding: 0;
@@ -28,38 +29,32 @@
 }
 
 body {
-  line-height: 1.6;
   background: var(--background);
   color: var(--text);
+  line-height: 1.6;
   transition: background 0.3s, color 0.3s;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
-  transition: color 0.3s, background 0.3s;
-}
-
-/* ------------------------------ */
-/* Header / Navbar */
-/* ------------------------------ */
+/* ----------------------------
+   Header / Navbar
+----------------------------- */
 header {
-  background: var(--primary);
-  color: var(--text);
-  padding: 15px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 15px 40px;
+  background: var(--primary);
+  color: var(--text);
   position: sticky;
   top: 0;
   z-index: 1000;
-  border-bottom: 2px solid var(--accent);
 }
 
 header h1 a {
-  font-size: 1.8rem;
-  font-weight: bold;
   color: var(--text);
+  text-decoration: none;
+  font-size: 1.8rem;
+  font-weight: 700;
 }
 
 nav.navbar {
@@ -69,77 +64,119 @@ nav.navbar {
 
 nav.navbar a {
   color: var(--text);
-  padding: 10px 16px;
-  border-radius: 8px;
-  transition: all 0.3s;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  transition: background 0.3s;
 }
 
 nav.navbar a:hover {
   background: var(--secondary);
-  transform: scale(1.05);
 }
 
-/* ------------------------------ */
-/* Theme Toggle Icon */
-/* ------------------------------ */
 .theme-toggle {
-  background: transparent;
+  background: var(--secondary);
   border: none;
-  cursor: pointer;
-  color: var(--text);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
   font-size: 1.2rem;
-  transition: transform 0.2s, color 0.3s;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
 }
 
 .theme-toggle:hover {
-  transform: scale(1.2);
-  color: var(--accent);
+  background: var(--accent);
+  transform: scale(1.1);
 }
 
-/* ------------------------------ */
-/* Hero Section */
-/* ------------------------------ */
-.hero {
-  text-align: center;
-  padding: 80px 40px;
-  background: linear-gradient(to right, var(--primary), var(--secondary));
-  color: var(--text);
-  border-radius: 10px;
-  margin: 40px auto;
+/* ----------------------------
+   Main / Sections
+----------------------------- */
+main {
   max-width: 1000px;
+  margin: 20px auto;
+  padding: 0 20px;
 }
 
-.hero h2 {
+section.hero {
+  text-align: center;
+  padding: 60px 20px;
+  margin-bottom: 40px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: var(--text);
+}
+
+section.hero h2 {
   font-size: 2.5rem;
   margin-bottom: 15px;
 }
 
-.hero p {
-  font-size: 1.3rem;
+section.hero p {
+  font-size: 1.2rem;
   margin-bottom: 25px;
 }
 
-/* ------------------------------ */
-/* Containers / Sections */
-main, section {
-  max-width: 1000px;
-  margin: 40px auto;
-  padding: 20px 40px;
-  background: var(--background);
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+section.hero .btn {
+  font-size: 1rem;
+  padding: 12px 24px;
 }
 
-/* ------------------------------ */
-/* Buttons */
+/* ----------------------------
+   Cards
+----------------------------- */
+.card {
+  background: var(--background);
+  padding: 25px;
+  margin-bottom: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+/* ----------------------------
+   Forms
+----------------------------- */
+form label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: var(--background);
+  color: var(--text);
+  transition: border 0.3s;
+}
+
+form input:focus,
+form textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
 .btn {
   display: inline-block;
-  padding: 12px 24px;
   background: var(--primary);
   color: var(--text);
+  padding: 12px 25px;
   border-radius: 8px;
+  text-decoration: none;
   font-weight: 600;
-  transition: all 0.3s;
+  transition: background 0.3s, transform 0.2s;
+  cursor: pointer;
 }
 
 .btn:hover {
@@ -147,96 +184,49 @@ main, section {
   transform: scale(1.05);
 }
 
-/* ------------------------------ */
-/* Forms */
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
-form label {
-  font-weight: 500;
-}
-
-form input,
-form textarea {
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background: var(--background);
-  color: var(--text);
-  transition: border 0.3s, box-shadow 0.3s;
-}
-
-form input:focus,
-form textarea:focus {
-  outline: none;
-  border-color: var(--primary);
-  box-shadow: 0 0 6px var(--primary);
-}
-
-form button {
-  width: fit-content;
-  padding: 12px 24px;
-  background: var(--primary);
-  color: var(--text);
-  border: none;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-form button:hover {
-  background: var(--accent);
-  transform: scale(1.05);
-}
-
-/* ------------------------------ */
-/* Cards */
-.card {
-  padding: 20px;
-  background: var(--background);
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-}
-
-/* ------------------------------ */
-/* Footer */
+/* ----------------------------
+   Footer
+----------------------------- */
 footer {
   text-align: center;
-  padding: 25px 40px;
+  padding: 20px;
   background: var(--primary);
   color: var(--text);
   margin-top: 40px;
   border-radius: 12px 12px 0 0;
 }
 
-/* ------------------------------ */
-/* Responsive */
+/* ----------------------------
+   Responsive
+----------------------------- */
 @media (max-width: 768px) {
   header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 15px;
+    padding: 15px 20px;
   }
 
   nav.navbar {
-    flex-wrap: wrap;
+    flex-direction: column;
+    width: 100%;
   }
 
-  main, section {
-    padding: 20px;
+  nav.navbar a {
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
+    padding: 10px 0;
   }
 
-  .hero {
-    padding: 60px 20px;
+  .theme-toggle {
+    align-self: flex-end;
+  }
+
+  section.hero h2 {
+    font-size: 2rem;
+  }
+
+  section.hero p {
+    font-size: 1rem;
   }
 }
