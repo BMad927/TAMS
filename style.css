@@ -1,4 +1,6 @@
-/* ===== Theme Variables ===== */
+/* ------------------------------ */
+/* Theme Variables */
+/* ------------------------------ */
 :root[data-theme="light"] {
   --text: #0c0c0a;
   --background: #ffffff;
@@ -15,7 +17,9 @@
   --accent: #b89b0a;
 }
 
-/* ===== Reset ===== */
+/* ------------------------------ */
+/* Reset / Base Styles */
+/* ------------------------------ */
 * {
   margin: 0;
   padding: 0;
@@ -30,159 +34,120 @@ body {
   transition: background 0.3s, color 0.3s;
 }
 
-/* ===== Header ===== */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ------------------------------ */
+/* Header / Navbar */
+/* ------------------------------ */
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   background: var(--primary);
   color: var(--text);
   padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   position: sticky;
   top: 0;
   z-index: 1000;
 }
 
 header h1 a {
-  color: var(--text);
-  text-decoration: none;
   font-size: 1.8rem;
   font-weight: bold;
+  color: var(--text);
 }
 
-.theme-toggle {
-  background: var(--secondary);
-  border: none;
+nav.navbar {
+  display: flex;
+  gap: 15px;
+}
+
+nav.navbar a {
+  color: var(--text);
   padding: 8px 14px;
-  border-radius: 6px;
-  cursor: pointer;
+  border-radius: 4px;
   transition: background 0.3s;
 }
 
+nav.navbar a:hover {
+  background: var(--secondary);
+}
+
+.theme-toggle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--text);
+  transition: transform 0.2s;
+}
+
 .theme-toggle:hover {
-  background: var(--accent);
+  transform: scale(1.1);
 }
 
-/* ===== Main Sections ===== */
-main {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 40px 20px;
-}
-
-/* ===== Hero Section ===== */
+/* ------------------------------ */
+/* Hero Section */
+/* ------------------------------ */
 .hero {
   text-align: center;
-  padding: 80px 20px;
-  background: linear-gradient(
-      rgba(0,0,0,0.4),
-      rgba(0,0,0,0.4)
-    ),
-    url('https://placehold.co/1920x1080/c2ae48/ffffff?text=Reliable+Manpower') center/cover no-repeat;
-  color: #fff;
-  border-radius: 12px;
-}
-
-.hero h2 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 20px;
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
-}
-
-.hero p {
-  font-size: 1.3rem;
-  margin-bottom: 30px;
-}
-
-.hero .buttons .btn {
-  padding: 12px 28px;
-  font-weight: 600;
-  background: var(--accent);
-  color: #000;
-  border-radius: 50px;
-  text-decoration: none;
-  transition: all 0.3s;
-}
-
-.hero .buttons .btn:hover {
-  transform: scale(1.05);
-  background: rgba(245, 217, 73, 0.9);
-}
-
-/* ===== About Section ===== */
-#about {
-  margin-top: 60px;
-  text-align: center;
-}
-
-#about h2 {
-  font-size: 2rem;
-  color: var(--primary);
-  margin-bottom: 20px;
-}
-
-#about p {
-  font-size: 1.1rem;
-  margin-bottom: 15px;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#about img {
-  margin-top: 20px;
-  border-radius: 12px;
-  max-width: 100%;
-}
-
-/* ===== Services Section ===== */
-#services {
-  margin-top: 80px;
-  text-align: center;
-}
-
-#services h2 {
-  font-size: 2rem;
-  color: var(--primary);
+  padding: 60px 20px;
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  color: var(--text);
+  border-radius: 10px;
   margin-bottom: 40px;
 }
 
-.service-box {
-  background: var(--secondary);
+.hero h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+/* ------------------------------ */
+/* Container / Section Styling */
+/* ------------------------------ */
+main, section {
+  max-width: 900px;
+  margin: 40px auto;
   padding: 20px;
-  border-radius: 12px;
-  flex: 1 1 300px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
+  background: var(--background);
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
-.service-box:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+/* ------------------------------ */
+/* Buttons */
+/* ------------------------------ */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: var(--primary);
+  color: var(--text);
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s;
 }
 
-.service-box h3 {
-  color: var(--primary);
-  margin-bottom: 12px;
+.btn:hover {
+  background: var(--accent);
+  transform: scale(1.05);
 }
 
-.service-box p {
-  font-size: 1rem;
-  line-height: 1.5;
-}
-
-/* ===== Forms ===== */
+/* ------------------------------ */
+/* Forms */
+/* ------------------------------ */
 form {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  background: var(--secondary);
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  max-width: 600px;
-  margin: 0 auto 40px auto;
 }
 
 form label {
@@ -191,26 +156,29 @@ form label {
 
 form input,
 form textarea {
-  padding: 10px 14px;
-  border-radius: 8px;
+  padding: 10px;
   border: 1px solid #ccc;
-  outline: none;
-  font-size: 1rem;
+  border-radius: 6px;
+  background: var(--background);
+  color: var(--text);
+  transition: border 0.3s, box-shadow 0.3s;
 }
 
 form input:focus,
 form textarea:focus {
+  outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 2px rgba(194, 174, 72, 0.3);
+  box-shadow: 0 0 5px var(--primary);
 }
 
 form button {
+  width: fit-content;
+  padding: 10px 20px;
   background: var(--primary);
   color: var(--text);
-  padding: 12px;
-  font-weight: 600;
-  border-radius: 50px;
   border: none;
+  border-radius: 6px;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.3s;
 }
@@ -220,47 +188,33 @@ form button:hover {
   transform: scale(1.05);
 }
 
-/* ===== Footer ===== */
+/* ------------------------------ */
+/* Footer */
+/* ------------------------------ */
 footer {
   text-align: center;
   padding: 20px;
   background: var(--primary);
   color: var(--text);
-  border-radius: 12px 12px 0 0;
   margin-top: 40px;
+  border-radius: 8px 8px 0 0;
 }
 
-/* ===== Responsive ===== */
+/* ------------------------------ */
+/* Responsive Adjustments */
+/* ------------------------------ */
 @media (max-width: 768px) {
-  .service-box {
-    flex: 1 1 100%;
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
   }
 
-  .hero h2 {
-    font-size: 2rem;
+  nav.navbar {
+    flex-wrap: wrap;
   }
 
-  .hero p {
-    font-size: 1.1rem;
+  .hero {
+    padding: 40px 20px;
   }
-
-  .navbar {
-    display: flex;
-    gap: 20px;
-  }
-  
-  .navbar a {
-    color: var(--text);
-    text-decoration: none;
-    padding: 8px 12px;
-    border-radius: 6px;
-    transition: background 0.3s, color 0.3s;
-  }
-  
-  .navbar a:hover {
-    background: var(--accent);
-    color: #000;
-    font-weight: 600;
-  }
-  
 }
