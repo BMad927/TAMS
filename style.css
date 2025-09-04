@@ -15,42 +15,32 @@
   --accent: #b89b0a;
 }
 
-/* Apply Theme */
-body {
-  background: var(--background);
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Header */
+header {
+  background: var(--primary);
   color: var(--text);
-  transition: background 0.3s, color 0.3s;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-/* Override Tailwind defaults with CSS vars */
-.bg-primary {
-  background-color: var(--primary) !important;
-}
-.bg-secondary {
-  background-color: var(--secondary) !important;
-}
-.bg-accent {
-  background-color: var(--accent) !important;
-}
-.text-primary {
-  color: var(--primary) !important;
-}
-.text-secondary {
-  color: var(--secondary) !important;
-}
-.text-accent {
-  color: var(--accent) !important;
-}
-
-/* Theme Toggle Button */
-.theme-toggle {
-  background: var(--secondary);
-  border: none;
-  padding: 8px 14px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-.theme-toggle:hover {
-  background: var(--accent);
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  color: var(--text);
+  border-radius: 10px;
 }
