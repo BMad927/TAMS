@@ -106,7 +106,7 @@ if (applyForm) {
     }
   });
 
-  const toggleBtn = document.getElementById("themeToggle");
+const toggleBtn = document.getElementById("themeToggle");
 const root = document.documentElement;
 
 // Load saved theme
