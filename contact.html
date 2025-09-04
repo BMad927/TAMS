@@ -1,58 +1,51 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact - TASS Manpower Services</title>
+  <title>TASS - Contact</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <header>
-  <h1><a href="index.html">TASS</a></h1>
-  <nav class="navbar">
-    <a href="index.html">Home</a>
+  <nav>
+    <h1><a href="index.html">TASS</a></h1>
+    <div class="navbar">
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+      <a href="apply.html">Apply</a>
+    </div>
+    <button id="menu-button">☰</button>
+    <button class="theme-toggle" id="theme-toggle">🌓</button>
+  </nav>
+  <div id="mobile-menu" class="hidden">
     <a href="about.html">About</a>
     <a href="services.html">Services</a>
     <a href="contact.html">Contact</a>
     <a href="apply.html">Apply</a>
-  </nav>
-  <button id="theme-toggle" class="theme-toggle">🌙</button>
+  </div>
 </header>
 
 <main>
-  <section class="hero">
-    <h2>Contact Us</h2>
-    <p>Have questions or inquiries? Send us a message!</p>
-  </section>
-
   <section>
-    <div class="card">
-      <form id="contact-form">
-        <label for="contact-name">Full Name</label>
-        <input type="text" id="contact-name" required>
-
-        <label for="contact-email">Email Address</label>
-        <input type="email" id="contact-email" required>
-
-        <label for="contact-message">Message</label>
-        <textarea id="contact-message" rows="5" required></textarea>
-
-        <button type="submit" class="btn">Send Message</button>
-      </form>
-    </div>
+    <h2>Get in Touch</h2>
+    <form id="contact-form">
+      <input type="text" id="contact-name" placeholder="Full Name" required>
+      <input type="email" id="contact-email" placeholder="Email Address" required>
+      <textarea id="contact-message" placeholder="Message" rows="5" required></textarea>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
   </section>
 </main>
 
 <footer>
   <p>&copy; 2025 TASS Manpower Services. All Rights Reserved.</p>
+  <p>Proudly serving Toledo City, Cebu and beyond.</p>
 </footer>
 
-<!-- Supabase CDN -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
-
-<!-- Your script -->
 <script src="js/script.js" defer></script>
-
 </body>
 </html>

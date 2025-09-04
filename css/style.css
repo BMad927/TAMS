@@ -39,6 +39,7 @@ header {
   background: var(--background);
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   transition: top 0.3s;
+  padding: 0 20px;
 }
 
 header.hidden {
@@ -51,7 +52,7 @@ header nav {
   align-items: center;
   max-width: 1200px;
   margin: auto;
-  padding: 10px 20px;
+  padding: 10px 0;
 }
 
 header h1 a {
@@ -61,17 +62,22 @@ header h1 a {
   font-size: 1.8rem;
 }
 
+.navbar {
+  display: flex;
+  gap: 15px;
+}
+
 .navbar a {
   text-decoration: none;
   color: var(--text);
-  margin-left: 15px;
-  padding: 6px 10px;
-  border-radius: 4px;
-  transition: background 0.3s;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: background 0.3s, color 0.3s;
 }
 
 .navbar a:hover {
   background: var(--secondary);
+  color: var(--text);
 }
 
 /* Mobile menu */
@@ -80,6 +86,18 @@ header h1 a {
   flex-direction: column;
   gap: 10px;
   padding: 10px 20px;
+  background: var(--background);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  border-radius: 0 0 10px 10px;
+}
+
+/* Mobile toggle button */
+#menu-button {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 
 /* Theme toggle */
@@ -174,6 +192,9 @@ footer {
 @media (max-width: 768px) {
   .navbar {
     display: none;
+  }
+  #menu-button {
+    display: block;
   }
   #mobile-menu {
     display: flex;
