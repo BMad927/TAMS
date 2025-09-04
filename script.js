@@ -105,4 +105,22 @@ if (applyForm) {
       applyForm.reset();
     }
   });
+
+  const toggleBtn = document.getElementById("themeToggle");
+const root = document.documentElement;
+
+// Load saved theme
+if (localStorage.getItem("theme")) {
+  root.setAttribute("data-theme", localStorage.getItem("theme"));
+} else {
+  root.setAttribute("data-theme", "light"); // default
+}
+
+toggleBtn.addEventListener("click", () => {
+  let current = root.getAttribute("data-theme");
+  let next = current === "light" ? "dark" : "light";
+  root.setAttribute("data-theme", next);
+  localStorage.setItem("theme", next);
+});
+
 }
