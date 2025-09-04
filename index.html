@@ -13,64 +13,24 @@
 
   <!-- Header -->
   <header>
-    <h1><a href="index.html" style="text-decoration: none; color: inherit;">TASS</a></h1>
-    <button id="menu-button" class="theme-toggle">Toggle Theme</button>
+    <h1><a href="index.html">TASS</a></h1>
+    <nav>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+      <a href="apply.html">Apply</a>
+    </nav>
+    <button id="theme-toggle" class="theme-toggle">Toggle Theme</button>
   </header>
 
-  <main>
-    <!-- Hero Section -->
-    <section class="hero">
-      <h2>Your Partner in Manpower Excellence in Toledo City</h2>
-      <p>Providing skilled and dedicated workers to fuel the growth of industries in Cebu.</p>
-      <div class="buttons">
-        <a href="#contact" class="btn">Contact Us Today</a>
-      </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about">
-      <h2>About TASS</h2>
-      <p>
-        Based in Toledo City, Cebu, TASS is a leading manpower service provider committed 
-        to connecting skilled professionals with top-tier companies. We understand the 
-        unique needs of the local market and are dedicated to supporting the economic 
-        growth of our community.
-      </p>
-      <p>
-        Our mission is to provide reliable, efficient, and professional workforce 
-        solutions that help our clients achieve their business goals while also 
-        creating rewarding employment opportunities for our people.
-      </p>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services">
-      <h2>Our Services</h2>
-      <ul>
-        <li><strong>Manpower Supply</strong> — Skilled and reliable workforce tailored to industry needs.</li>
-        <li><strong>Recruitment & Staffing</strong> — From sourcing to placement, we handle the entire recruitment process.</li>
-        <li><strong>Partnership with Atlas Fertilizer</strong> — Trusted manpower provider for Atlas Fertilizer in Toledo City.</li>
-      </ul>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact">
-      <h2>Get in Touch</h2>
-      <p>Ready to find the right people for your team or looking for a new opportunity? Contact us today!</p>
-      <form>
-        <label for="name">Full Name</label>
-        <input type="text" id="name" name="name" required>
-
-        <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" required>
-
-        <label for="message">Message</label>
-        <textarea id="message" name="message" rows="4"></textarea>
-
-        <button type="submit" class="btn">Send Message</button>
-      </form>
-    </section>
-  </main>
+  <!-- Hero Section -->
+  <section class="hero">
+    <h2>Your Partner in Manpower Excellence in Toledo City</h2>
+    <p>Providing skilled and dedicated workers to fuel the growth of industries in Cebu.</p>
+    <div class="buttons">
+      <a href="contact.html" class="btn">Contact Us Today</a>
+    </div>
+  </section>
 
   <!-- Footer -->
   <footer>
@@ -78,16 +38,6 @@
     <p>Proudly serving Toledo City, Cebu and beyond.</p>
   </footer>
 
-  <script>
-    // Theme Toggle Script
-    const themeToggle = document.getElementById('menu-button');
-    const root = document.documentElement;
-
-    themeToggle.addEventListener('click', () => {
-      const currentTheme = root.getAttribute('data-theme');
-      root.setAttribute('data-theme', currentTheme === 'light' ? 'dark' : 'light');
-    });
-  </script>
-
+  <script src="theme.js"></script>
 </body>
 </html>

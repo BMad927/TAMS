@@ -1,84 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Apply Now | TAMS</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Apply - TASS Manpower Services</title>
+  <link href="style.css" rel="stylesheet">
 </head>
 <body>
   <header>
-    <h1>TAMS</h1>
+    <h1><a href="index.html">TASS</a></h1>
     <nav>
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
       <a href="about.html">About</a>
+      <a href="services.html">Services</a>
       <a href="contact.html">Contact</a>
       <a href="apply.html" class="active">Apply</a>
     </nav>
-    <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+    <button id="theme-toggle" class="theme-toggle">Toggle Theme</button>
   </header>
-  
 
   <main>
-    <section class="apply">
+    <section>
       <h2>Apply Now</h2>
-      <form id="apply-form">
-        <div class="form-group">
-          <label for="apply-name">Full Name</label>
-          <input type="text" id="apply-name" name="name" required autocomplete="name" />
-        </div>
-    
-        <div class="form-group">
-          <label for="apply-email">Email Address</label>
-          <input type="email" id="apply-email" name="email" required autocomplete="email" />
-        </div>
-    
-        <div class="form-group">
-          <label for="apply-position">Position Applied For</label>
-          <input type="text" id="apply-position" name="position" required autocomplete="organization-title" />
-        </div>
-    
-        <div class="form-group">
-          <label for="apply-resume">Resume / CV (Link)</label>
-          <input type="url" id="apply-resume" name="resume" required placeholder="https://..." autocomplete="url" />
-        </div>
-    
+      <form>
+        <label for="fullname">Full Name</label>
+        <input type="text" id="fullname" name="fullname" required>
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone">
+
+        <label for="position">Position Applied For</label>
+        <input type="text" id="position" name="position" required>
+
+        <label for="resume">Upload Resume</label>
+        <input type="file" id="resume" name="resume">
+
         <button type="submit" class="btn">Submit Application</button>
       </form>
     </section>
-    
-    
   </main>
 
   <footer>
-    <p>© 2025 TAMS Toledo. All rights reserved.</p>
+    <p>&copy; 2024 TASS Manpower Services. All Rights Reserved.</p>
   </footer>
-  <script>
-    function toggleTheme() {
-      const root = document.documentElement;
-      if (root.getAttribute("data-theme") === "dark") {
-        root.setAttribute("data-theme", "light");
-        localStorage.setItem("theme", "light");
-      } else {
-        root.setAttribute("data-theme", "dark");
-        localStorage.setItem("theme", "dark");
-      }
-    }
-  
-    // Load saved theme on refresh
-    (function() {
-      const savedTheme = localStorage.getItem("theme") || "light";
-      document.documentElement.setAttribute("data-theme", savedTheme);
-    })();
-  </script>
-  
-  
-  <!-- Supabase CDN -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
-<!-- Your script -->
-<script type="module" src="script.js"></script>
 
-  
+  <script src="theme.js"></script>
+    <!-- Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+    <!-- Your script -->
+    <script type="module" src="script.js"></script>
 </body>
 </html>
+

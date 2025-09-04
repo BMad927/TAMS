@@ -1,71 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us | TAMS</title>
-  <link rel="stylesheet" href="style.css">
+  <title>About - TASS Manpower Services</title>
+  <link href="style.css" rel="stylesheet">
 </head>
 <body>
   <header>
-    <h1>TAMS</h1>
+    <h1><a href="index.html">TASS</a></h1>
     <nav>
-      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About</a>
       <a href="services.html">Services</a>
-      <a href="about.html"class="active">About</a>
       <a href="contact.html">Contact</a>
       <a href="apply.html">Apply</a>
     </nav>
-    <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+    <button id="theme-toggle" class="theme-toggle">Toggle Theme</button>
   </header>
-  
 
   <main>
-    <section class="about">
-      <h2>About Us</h2>
+    <section>
+      <h2>About TASS</h2>
       <p>
-        TAMS (Toledo Atlas Manpower Services) provides skilled manpower support 
-        for port operations and industrial needs. Our workforce includes stevedores, 
-        winch operators, payloader drivers, palletizers, arrastre, kapatas, mooring crews, 
-        and more. 
+        Based in Toledo City, Cebu, TASS is a leading manpower service provider 
+        committed to connecting skilled professionals with top-tier companies.
       </p>
       <p>
-        Based in Toledo City, Cebu, we are a trusted partner of Atlas Fertilizer 
-        and other clients, ensuring smooth and efficient operations with reliable manpower.
+        Our mission is to provide reliable, efficient, and professional workforce 
+        solutions that help our clients achieve their business goals while also 
+        creating rewarding employment opportunities for our people.
       </p>
-      <div class="buttons">
-        <a href="services.html" class="btn">Our Services</a>
-        <a href="contact.html" class="btn">Contact Us</a>
-        <a href="apply.html" class="btn">Apply Now</a>
-      </div>
     </section>
   </main>
 
   <footer>
-    <p>© 2025 TAMS. All rights reserved.</p>
+    <p>&copy; 2024 TASS Manpower Services. All Rights Reserved.</p>
   </footer>
 
-  <script>
-    function toggleTheme() {
-      const root = document.documentElement;
-      if (root.getAttribute("data-theme") === "dark") {
-        root.setAttribute("data-theme", "light");
-        localStorage.setItem("theme", "light");
-      } else {
-        root.setAttribute("data-theme", "dark");
-        localStorage.setItem("theme", "dark");
-      }
-    }
-  
-    // Load saved theme on refresh
-    (function() {
-      const savedTheme = localStorage.getItem("theme") || "light";
-      document.documentElement.setAttribute("data-theme", savedTheme);
-    })();
-  </script>
-  
-
-  <script type="module" src="script.js"></script>
-
+  <script src="theme.js"></script>
 </body>
 </html>

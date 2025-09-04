@@ -23,6 +23,13 @@
   font-family: 'Inter', sans-serif;
 }
 
+body {
+  line-height: 1.6;
+  background: var(--background);
+  color: var(--text);
+  transition: background 0.3s, color 0.3s;
+}
+
 /* Header */
 header {
   background: var(--primary);
@@ -36,11 +43,113 @@ header {
   z-index: 1000;
 }
 
-/* Hero */
+header h1 a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+nav {
+  display: flex;
+  gap: 15px;
+}
+
+nav a {
+  color: var(--text);
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+nav a:hover {
+  background: var(--secondary);
+}
+
+nav a.active {
+  background: var(--accent);
+  font-weight: bold;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+  background: var(--secondary);
+  border: none;
+  padding: 8px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.theme-toggle:hover {
+  background: var(--accent);
+}
+
+/* Hero Section */
 .hero {
   text-align: center;
   padding: 60px 20px;
   background: linear-gradient(to right, var(--primary), var(--secondary));
   color: var(--text);
   border-radius: 10px;
+  margin: 20px;
+}
+
+.hero h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+/* Buttons */
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: var(--primary);
+  color: var(--text);
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background: var(--accent);
+}
+
+/* Forms */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input, textarea, select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+button[type="submit"] {
+  cursor: pointer;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 15px;
+  background: var(--primary);
+  color: var(--text);
+  margin-top: 40px;
+  border-radius: 8px 8px 0 0;
 }
