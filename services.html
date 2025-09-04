@@ -3,36 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Services - TASS Manpower Services</title>
+  <title>Services - TASS</title>
   <link href="style.css" rel="stylesheet">
 </head>
 <body>
   <header>
     <h1><a href="index.html">TASS</a></h1>
-    <nav>
+    <nav class="navbar">
       <a href="about.html">About</a>
-      <a href="services.html" class="active">Services</a>
+      <a href="services.html">Services</a>
       <a href="contact.html">Contact</a>
       <a href="apply.html">Apply</a>
     </nav>
-    <button id="theme-toggle" class="theme-toggle">Toggle Theme</button>
+    <button id="theme-toggle" class="theme-toggle">
+      <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="24" height="24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8.66-12.66l-.71.71M4.05 19.95l-.71.71m16.97 0l-.71-.71M4.05 4.05l-.71-.71M21 12h1M3 12H2m16.66 4.66l-.71-.71M6.05 6.05l-.71-.71M12 5a7 7 0 100 14 7 7 0 000-14z"/>
+      </svg>
+    </button>
   </header>
 
   <main>
-    <section>
-      <h2>Our Services</h2>
-      <ul>
-        <li><strong>Manpower Supply</strong> — Skilled and reliable workforce tailored to industry needs.</li>
-        <li><strong>Recruitment & Staffing</strong> — From sourcing to placement, we handle the entire recruitment process.</li>
-        <li><strong>Partnership with Atlas Fertilizer</strong> — Trusted manpower provider for Atlas Fertilizer in Toledo City.</li>
-      </ul>
-    </section>
+    <h2>Our Services</h2>
+    <div class="service-container">
+      <div class="service-box">
+        <h3>Manpower Supply</h3>
+        <p>We specialize in providing a skilled and reliable workforce tailored to the specific needs of various industries.</p>
+      </div>
+      <div class="service-box">
+        <h3>Recruitment & Staffing</h3>
+        <p>From sourcing to placement, we handle the entire recruitment process to find the perfect candidates for your team.</p>
+      </div>
+      <div class="service-box">
+        <h3>Partnering with Atlas Fertilizer</h3>
+        <p>We are proud to be a trusted manpower partner for Atlas Fertilizer in Toledo City, supplying the dedicated workers essential to their operations.</p>
+      </div>
+    </div>
   </main>
 
   <footer>
     <p>&copy; 2024 TASS Manpower Services. All Rights Reserved.</p>
+    <p>Proudly serving Toledo City, Cebu and beyond.</p>
   </footer>
 
-  <script src="theme.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script type="module" src="script.js"></script>
 </body>
 </html>

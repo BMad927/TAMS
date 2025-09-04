@@ -3,54 +3,55 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Apply - TASS Manpower Services</title>
+  <title>Apply - TASS</title>
   <link href="style.css" rel="stylesheet">
 </head>
 <body>
+
   <header>
     <h1><a href="index.html">TASS</a></h1>
-    <nav>
+    <nav class="navbar">
       <a href="about.html">About</a>
       <a href="services.html">Services</a>
       <a href="contact.html">Contact</a>
-      <a href="apply.html" class="active">Apply</a>
+      <a href="apply.html">Apply</a>
     </nav>
-    <button id="theme-toggle" class="theme-toggle">Toggle Theme</button>
+    <button id="theme-toggle" class="theme-toggle">
+      <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="24" height="24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8.66-12.66l-.71.71M4.05 19.95l-.71.71m16.97 0l-.71-.71M4.05 4.05l-.71-.71M21 12h1M3 12H2m16.66 4.66l-.71-.71M6.05 6.05l-.71-.71M12 5a7 7 0 100 14 7 7 0 000-14z"/>
+      </svg>
+    </button>
   </header>
 
   <main>
-    <section>
-      <h2>Apply Now</h2>
-      <form>
-        <label for="fullname">Full Name</label>
-        <input type="text" id="fullname" name="fullname" required>
+    <h2>Apply Now</h2>
+    <form id="apply-form" enctype="multipart/form-data">
+      <label for="apply-name">Full Name</label>
+      <input type="text" id="apply-name" name="fullname" required>
 
-        <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" required>
+      <label for="apply-email">Email</label>
+      <input type="email" id="apply-email" name="email" required>
 
-        <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" name="phone">
+      <label for="apply-phone">Phone Number</label>
+      <input type="tel" id="apply-phone" name="phone" required>
 
-        <label for="position">Position Applied For</label>
-        <input type="text" id="position" name="position" required>
+      <label for="apply-position">Position Applied For</label>
+      <input type="text" id="apply-position" name="position" required>
 
-        <label for="resume">Upload Resume</label>
-        <input type="file" id="resume" name="resume">
+      <label for="apply-resume">Upload Resume</label>
+      <input type="file" id="apply-resume" name="resume">
 
-        <button type="submit" class="btn">Submit Application</button>
-      </form>
-    </section>
+      <button type="submit" class="btn">Submit Application</button>
+    </form>
   </main>
 
   <footer>
     <p>&copy; 2024 TASS Manpower Services. All Rights Reserved.</p>
+    <p>Proudly serving Toledo City, Cebu and beyond.</p>
   </footer>
 
-  <script src="theme.js"></script>
-    <!-- Supabase CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
-    <!-- Your script -->
-    <script type="module" src="script.js"></script>
+  <!-- Supabase CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script type="module" src="script.js"></script>
 </body>
 </html>
-
