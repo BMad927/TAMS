@@ -12,20 +12,29 @@ const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 const themeButton = document.getElementById('theme-toggle');
 const html = document.documentElement;
 
+// Function to apply a theme
 function setTheme(theme) {
   html.setAttribute('data-theme', theme);
   localStorage.setItem('theme', theme);
-  themeButton.textContent = theme === 'dark' ? '☀️' : '🌙';
+  if(themeButton) themeButton.textContent = theme === 'dark' ? '☀️' : '🌙';
 }
 
-// Load saved theme
-const savedTheme = localStorage.getItem('theme') || 'light';
-setTheme(savedTheme);
+// Load saved theme or default to light
+const savedTheme = localStorage.getItem('theme');
+if(savedTheme) {
+  setTheme(savedTheme);
+} else {
+  setTheme('light');
+}
 
-themeButton.addEventListener('click', () => {
-  const current = html.getAttribute('data-theme');
-  setTheme(current === 'light' ? 'dark' : 'light');
-});
+// Toggle on button click
+if(themeButton){
+  themeButton.addEventListener('click', () => {
+    const current = html.getAttribute('data-theme');
+    setTheme(current === 'light' ? 'dark' : 'light');
+  });
+}
+
 
 // ==============================
 // MOBILE MENU TOGGLE
