@@ -243,4 +243,24 @@ footer {
   .hero p {
     font-size: 1.1rem;
   }
+
+  .navbar {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .navbar a {
+    color: var(--text);
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: background 0.3s, color 0.3s;
+  }
+  
+  .navbar a:hover {
+    background: var(--accent);
+    color: #000;
+    font-weight: 600;
+  }
+  
 }

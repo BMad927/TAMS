@@ -51,3 +51,17 @@ applyForm.addEventListener('submit', async (e) => {
     applyForm.reset();
   }
 });
+
+// ===== Theme Toggle =====
+const themeToggle = document.getElementById('theme-toggle');
+const root = document.documentElement;
+const themeIcon = document.getElementById('theme-icon');
+
+themeToggle.addEventListener('click', () => {
+  const currentTheme = root.getAttribute('data-theme');
+  const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+  root.setAttribute('data-theme', newTheme);
+
+  // Optionally rotate the icon or change color
+  themeIcon.style.transform = newTheme === 'dark' ? 'rotate(180deg)' : 'rotate(0deg)';
+});
