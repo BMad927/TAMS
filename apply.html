@@ -21,25 +21,33 @@
   
 
   <main>
-    <section class="contact">
-      <h2>Contact Us</h2>
-      <form id="apply-form" method="post" action="#">
-        <label for="apply-name">Full Name</label>
-        <input id="apply-name" name="name" type="text" required autocomplete="name">
-      
-        <label for="apply-email">Email</label>
-        <input id="apply-email" name="email" type="email" required autocomplete="email">
-      
-        <label for="apply-position">Position</label>
-        <input id="apply-position" name="position" type="text" required autocomplete="organization-title">
-      
-        <label for="apply-resume">Resume (Link)</label>
-        <input id="apply-resume" name="resume" type="url" required autocomplete="url">
-      
-        <button type="submit">Apply Now</button>
+    <section class="apply">
+      <h2>Apply Now</h2>
+      <form id="apply-form">
+        <div class="form-group">
+          <label for="apply-name">Full Name</label>
+          <input type="text" id="apply-name" name="name" required autocomplete="name" />
+        </div>
+    
+        <div class="form-group">
+          <label for="apply-email">Email Address</label>
+          <input type="email" id="apply-email" name="email" required autocomplete="email" />
+        </div>
+    
+        <div class="form-group">
+          <label for="apply-position">Position Applied For</label>
+          <input type="text" id="apply-position" name="position" required autocomplete="organization-title" />
+        </div>
+    
+        <div class="form-group">
+          <label for="apply-resume">Resume / CV (Link)</label>
+          <input type="url" id="apply-resume" name="resume" required placeholder="https://..." autocomplete="url" />
+        </div>
+    
+        <button type="submit" class="btn">Submit Application</button>
       </form>
-      
     </section>
+    
     
   </main>
 

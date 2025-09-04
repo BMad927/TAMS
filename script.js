@@ -1,82 +1,108 @@
-// ---- Supabase client (browser build) ----
-const SUPABASE_URL = "https://frmsjykcwzklqzaxfiyq.supabase.co";
-const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZybXNqeWtjd3prbHF6YXhmaXlxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY5MDgzMjEsImV4cCI6MjA3MjQ4NDMyMX0.v7pwM3qU8RzHKe0RYuMq0hSG95sKzwLH4LYCRvZyFNo";
+// ---------------------------
+// Analytics Example (Simple Bar Chart)
+// ---------------------------
+const analyticsData = {
+  labels: ["Stevedores", "Winch Operators", "Payloader", "Arrastre", "Mooring"],
+  values: [120, 50, 35, 80, 25] // Example numbers (replace later with real data)
+};
 
-if (!window.supabase) {
-  alert("❌ Supabase library failed to load. Check the <script src> include.");
+function renderAnalytics() {
+  const ctx = document.getElementById("analyticsChart");
+  if (!ctx) return;
+
+  ctx.innerHTML = ""; // clear if re-rendered
+  analyticsData.labels.forEach((label, i) => {
+    const barContainer = document.createElement("div");
+    barContainer.style.display = "flex";
+    barContainer.style.alignItems = "center";
+    barContainer.style.margin = "6px 0";
+
+    const barLabel = document.createElement("span");
+    barLabel.textContent = label;
+    barLabel.style.width = "150px";
+
+    const bar = document.createElement("div");
+    bar.style.height = "20px";
+    bar.style.background = "#007BFF";
+    bar.style.width = analyticsData.values[i] + "px";
+    bar.style.marginLeft = "10px";
+    bar.style.borderRadius = "5px";
+
+    barContainer.appendChild(barLabel);
+    barContainer.appendChild(bar);
+    ctx.appendChild(barContainer);
+  });
 }
-const supabase = window.supabase?.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+renderAnalytics();
 
-// ---- Hook forms after DOM is ready ----
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("script.js loaded. Hooking forms…");
+// ---------------------------
+// Supabase Setup
+// ---------------------------
+const { createClient } = supabase;
 
-  // CONTACT
-  const contactForm = document.getElementById("contact-form");
-  if (contactForm) {
-    console.log("[contact] form found");
-    contactForm.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const name = document.getElementById("contact-name")?.value?.trim() ?? "";
-      const email = document.getElementById("contact-email")?.value?.trim() ?? "";
-      const message = document.getElementById("contact-message")?.value?.trim() ?? "";
+const SUPABASE_URL = "https://frmsjykcwzklqzaxfiyq.supabase.co";
+const SUPABASE_ANON_KEY =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZybXNqeWtjd3prbHF6YXhmaXlxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY5MDgzMjEsImV4cCI6MjA3MjQ4NDMyMX0.v7pwM3qU8RzHKe0RYuMq0hSG95sKzwLH4LYCRvZyFNo";
 
-      alert(`Submitting contact:\n${name}\n${email}`);
-      try {
-        const { data, error } = await supabase
-          .from("contacts")
-          .insert([{ name, email, message }])
-          .select();
+const supa = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-        if (error) {
-          console.error(error);
-          alert("❌ Error saving contact: " + error.message);
-          return;
-        }
-        console.log("[contact] inserted:", data);
-        alert("✅ Message sent! Thank you.");
-        contactForm.reset();
-      } catch (err) {
-        console.error(err);
-        alert("❌ Unexpected error. See console for details.");
-      }
-    });
-  } else {
-    console.log("[contact] form NOT found on this page");
-  }
+// ---------------------------
+// Contact Form Handler
+// ---------------------------
+const contactForm = document.getElementById("contact-form");
+if (contactForm) {
+  contactForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-  // APPLY
-  const applyForm = document.getElementById("apply-form");
-  if (applyForm) {
-    console.log("[apply] form found");
-    applyForm.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const name = document.getElementById("apply-name")?.value?.trim() ?? "";
-      const email = document.getElementById("apply-email")?.value?.trim() ?? "";
-      const position = document.getElementById("apply-position")?.value?.trim() ?? "";
-      const resume = document.getElementById("apply-resume")?.value?.trim() ?? "";
+    const name = document.getElementById("contact-name").value.trim();
+    const email = document.getElementById("contact-email").value.trim();
+    const message = document.getElementById("contact-message").value.trim();
 
-      alert(`Submitting application:\n${name}\n${email}\n${position}`);
-      try {
-        const { data, error } = await supabase
-          .from("applications")
-          .insert([{ name, email, position, resume }])
-          .select();
+    if (!name || !email || !message) {
+      alert("⚠️ Please fill in all fields.");
+      return;
+    }
 
-        if (error) {
-          console.error(error);
-          alert("❌ Error saving application: " + error.message);
-          return;
-        }
-        console.log("[apply] inserted:", data);
-        alert("✅ Application submitted!");
-        applyForm.reset();
-      } catch (err) {
-        console.error(err);
-        alert("❌ Unexpected error. See console for details.");
-      }
-    });
-  } else {
-    console.log("[apply] form NOT found on this page");
-  }
-});
+    const { error } = await supa.from("contacts").insert([{ name, email, message }]);
+
+    if (error) {
+      console.error("Supabase Error:", error);
+      alert("❌ Error saving contact: " + error.message);
+    } else {
+      alert("✅ Message sent successfully!");
+      contactForm.reset();
+    }
+  });
+}
+
+// ---------------------------
+// Job Application Form Handler
+// ---------------------------
+const applyForm = document.getElementById("apply-form");
+if (applyForm) {
+  applyForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById("apply-name").value.trim();
+    const email = document.getElementById("apply-email").value.trim();
+    const position = document.getElementById("apply-position").value.trim();
+    const resume = document.getElementById("apply-resume").value.trim();
+
+    if (!name || !email || !position || !resume) {
+      alert("⚠️ Please fill in all fields.");
+      return;
+    }
+
+    const { error } = await supa
+      .from("applications")
+      .insert([{ name, email, position, resume }]);
+
+    if (error) {
+      console.error("Supabase Error:", error);
+      alert("❌ Error saving application: " + error.message);
+    } else {
+      alert("✅ Application submitted successfully!");
+      applyForm.reset();
+    }
+  });
+}
